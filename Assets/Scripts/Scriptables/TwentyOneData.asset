@@ -16,6 +16,6 @@ MonoBehaviour:
   AITotalCardValue: 0
   AICardCount: 0
   AILastCardValue: 0
-  PlayerTotalCardValue: 18
+  PlayerTotalCardValue: 0
   PlayerCardCount: 0
   PlayerLastCardValue: 0
