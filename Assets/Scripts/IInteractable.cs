@@ -1,4 +1,4 @@
 public interface IInteractable
 {
-    void Interact();
+    UnityEngine.Events.UnityEvent OnInteracted { get; }
 }

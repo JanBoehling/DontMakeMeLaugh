@@ -23,6 +23,6 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (!hasIntersect || !hitInfo.collider) return;
 
-        if (hitInfo.transform.TryGetComponent<IInteractable>(out var interactable)) interactable.Interact();
+        if (hitInfo.transform.TryGetComponent<IInteractable>(out var interactable)) interactable.OnInteracted.Invoke();
     }
 }
