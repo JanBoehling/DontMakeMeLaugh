@@ -5,7 +5,7 @@ using UnityEngine;
 public class TwentyOneBehaviour : BehaviorTreeBase
 {
     [SerializeField]
-    private GameObject _gameData; // Type can be changed?!?
+    private TwentyOneData _gameData;
 
     public TwentyOneBehaviour() 
         : base()
@@ -22,17 +22,17 @@ public class TwentyOneBehaviour : BehaviorTreeBase
                     new Sequenzer(new List<Node>()
                     {
                         new CheckCardValueCount(_gameData, 21, 0, true), // CardValue > 21
-                        new TaskOverTwentyOne()
+                        new TaskOverTwentyOne(_gameData)
                     }),
                     new Sequenzer(new List<Node>()
                     {
                         new CheckCardValueCount(_gameData, 15, 3), // CardValue < 15 && CardCount <= 3
-                        new TaskDrawCard()
+                        new TaskDrawCard(_gameData)
                     }),
                     new Sequenzer(new List<Node>()
                     {
                         new CheckCardValueCount(_gameData, 15, 3, true), // CardValue > 15 || CardCount > 3
-                        new TaskDeclineNewCard()
+                        new TaskDeclineNewCard(_gameData)
                     }),
                 }),
             }

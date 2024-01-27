@@ -3,12 +3,12 @@ using UnityEngine;
 
 internal class CheckCardValueCount : Node
 {
-    private GameObject _gameData;
+    private TwentyOneData _gameData;
     private int _cardValue;
     private int _cardCount;
     private bool _valuesGreaterThen;
 
-    public CheckCardValueCount(GameObject gameData, int cardValue, int cardCount, bool valuesGreaterThen = false)
+    public CheckCardValueCount(TwentyOneData gameData, int cardValue, int cardCount, bool valuesGreaterThen = false)
         : base()
     {
         _gameData = gameData;
@@ -19,20 +19,20 @@ internal class CheckCardValueCount : Node
 
     public override NodeState Evaluate()
     {
-        if (_cardCount == 0 & _cardValue == 21)
-            // pass
+        if (_cardCount == 0 & _gameData.AITotalCardValue == 21)
+            // Show directly
             return NodeState.Success;
 
         if (_valuesGreaterThen)
         {
-            if (_gameData.GesCardValue < _cardValue && _gameData.CardCount <= _cardCount)
+            if (_gameData.AITotalCardValue < _cardValue && _gameData.AICardCount <= _cardCount)
                 return NodeState.Success;
             else
                 return NodeState.Failed;
         }
         else
         {
-            if (_gameData.GesCardValue > _cardValue && _gameData.CardCount > _cardCount)
+            if (_gameData.AITotalCardValue > _cardValue && _gameData.AICardCount > _cardCount)
                 return NodeState.Success;
             else
                 return NodeState.Failed;
