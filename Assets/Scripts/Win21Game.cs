@@ -16,6 +16,10 @@ public class Win21Game : MonoBehaviour
     private bool playersTurn = true;
     private bool gameEnded;
 
+    private void Start()
+    {
+        data.Game = this;   
+    }
 
     private void Update()
     {
