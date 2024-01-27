@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class TheKingsGame : MonoBehaviour
 {
-<<<<<<< Updated upstream
-
-=======
     [SerializeField] private GameObject cardPrefab = null;
     [SerializeField] private Material cardFrontMaterial = null;
     [SerializeField] private TheKingsBehaviour enemy;
@@ -62,5 +59,4 @@ public class TheKingsGame : MonoBehaviour
         if (winner is not null) TheKingsController.RaiseScore((TheKingsParticipant)winner);
         else return;
     }
->>>>>>> Stashed changes
 }
