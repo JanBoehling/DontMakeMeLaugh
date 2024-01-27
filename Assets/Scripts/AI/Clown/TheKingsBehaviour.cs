@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class TheKingsBehaviour : Agent
 {
-    [SerializeField]
-    private TheKingsData
+    //[SerializeField]
+    //private TheKingsData
 
     protected override void Start()
     {
         AgentBeliefs = new WorldStates();
-        AgentBeliefs.ModifyState();
+        //AgentBeliefs.ModifyState();
 
         SubGoal goal = new("win", 1, false);
         Goals.Add(goal, 1);
