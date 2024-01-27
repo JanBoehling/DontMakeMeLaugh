@@ -8,6 +8,8 @@ public class TheKingsBehaviour : Agent
 
     protected override void Start()
     {
+        ResetGameData();
+
         AgentBeliefs = new WorldStates();
         foreach (var item in _data.AICards)
         {
@@ -51,5 +53,13 @@ public class TheKingsBehaviour : Agent
     public TheKingsData GetGameData()
     {
         return _data;
+    }
+
+    public void ResetGameData()
+    {
+        _data.AICards.Clear();
+        _data.AIPoints = 0;
+        _data.PlayerCards.Clear();
+        _data.PlayerPoints = 0;
     }
 }

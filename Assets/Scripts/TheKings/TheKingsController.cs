@@ -16,6 +16,7 @@ public static class TheKingsController
             case TheKingsParticipant.Player:
                 PlayedCardPlayer = card;
                 EnemyAgent.SetPlayerCard(card);
+                EnemyAgent.NextStep();
                 break;
 
             case TheKingsParticipant.Enemy:
@@ -31,17 +32,26 @@ public static class TheKingsController
         else return null;
     }
 
-    public static void RaiseScore(TheKingsParticipant owner)
+    public static bool RaiseScore(TheKingsParticipant owner)
     {
+        bool hasWinner = false;
+
         if (owner == TheKingsParticipant.Player) PlayerScore++;
         else EnemyScore++;
 
-        if (PlayerScore >= 3) Winner(TheKingsParticipant.Player);
+        if (PlayerScore >= 3)
+        {
+            Winner(TheKingsParticipant.Player);
+            hasWinner = true;
+        }
         else if (EnemyScore >= 3)
         {
             EnemyAgent.AgentBeliefs.ModifyState("hasPoint", 1);
             Winner(TheKingsParticipant.Enemy);
+            hasWinner = true;
         }
+
+        return hasWinner;
     }
 
     public static void Winner(TheKingsParticipant winner)

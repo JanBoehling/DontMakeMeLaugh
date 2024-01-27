@@ -20,7 +20,7 @@ public class ActionPlayPeasant : Action
         for (int i = 0; i < _agent.GetGameData().AICards.Count; i++)
             if (_agent.GetGameData().AICards[i].Rank == 0)
             {
-                _game.PlayCard(i); // Get right Card
+                _game.PlayCard(i);
                 return true;
             }
 

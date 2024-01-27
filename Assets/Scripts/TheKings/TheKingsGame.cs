@@ -14,10 +14,17 @@ public class TheKingsGame : MonoBehaviour
 
     private readonly List<GameObject> playerCardObjects = new(5);
     private readonly List<GameObject> AICardObjects = new(5);
+    private bool playerPlayed;
+    private bool enemyPlayed;
 
     private void Start()
     {
         TheKingsController.EnemyAgent = enemy;
+        StartGame();
+    }
+
+    public void StartGame()
+    {
         DealCards(playerCards, playerCardObjects);
         DealCards(AICards, AICardObjects);
 
@@ -38,24 +45,54 @@ public class TheKingsGame : MonoBehaviour
 
             cardObjects[i] = Instantiate(cardPrefab);
             cardFrontMaterial.SetTexture("BaseColorMap", card.CardTex);
+            cardObjects[i].GetComponent<Renderer>().material = cardFrontMaterial;
+            ButtonCard button = cardObjects[i].AddComponent<ButtonCard>();
+            button.CardSO = card;
         }
     }
 
     // Phase 2: every participant plays one card covered
-    public void PlayCard(int index)
+    public void PlayCard(int index, bool isPlayer = false)
     {
-        var playedCard = AICards[index];
-        AICards.RemoveAt(index);
+        CardSO playedCard;
+        if (isPlayer)
+        {
+            playedCard = playerCards[index];
+            playerCards.RemoveAt(index);
+            TheKingsController.PlayCard(playedCard, TheKingsParticipant.Player);
+            playerPlayed = true;
+        }
+        else
+        {
+            playedCard = AICards[index];
+            AICards.RemoveAt(index);
+            TheKingsController.PlayCard(playedCard, TheKingsParticipant.Enemy);
+            enemyPlayed = true;
+        }
 
-        TheKingsController.PlayCard(playedCard, TheKingsParticipant.Player);
+        if (playerPlayed && enemyPlayed)
+            CompareCards();
     }
 
     // Phase 3: both played cards ranks are compared. the one with the higher rank gets a point
     public void CompareCards()
     {
         var winner = TheKingsController.CompareCards();
+        bool hasWinner = false;
 
-        if (winner is not null) TheKingsController.RaiseScore((TheKingsParticipant)winner);
-        else return;
+        if (winner is not null)
+            hasWinner = TheKingsController.RaiseScore((TheKingsParticipant)winner);
+
+        playerPlayed = false;
+        enemyPlayed = false;
+        playerCards.Clear();
+        playerCardObjects.Clear();
+        AICards.Clear();
+        AICardObjects.Clear();
+
+        if (!hasWinner)
+            StartGame();
     }
+
+    public List<CardSO> GetPlayerCards() => playerCards;
 }
