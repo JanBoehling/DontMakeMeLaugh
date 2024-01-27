@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.1177, g: 324.74368, b: 429.81012, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -555,7 +555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 828209626}
-  - component: {fileID: 828209625}
+  - component: {fileID: 828209627}
   m_Layer: 0
   m_Name: NumberContainer
   m_TagString: Untagged
@@ -563,31 +563,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &828209625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828209624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bcc59c739afea74f88bf7205bb8ec11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textures:
-  - {fileID: 2800000, guid: 8ac686887e4431747b209de622b1c7e9, type: 3}
-  - {fileID: 2800000, guid: 0547b6396ca473f44867ab326257691b, type: 3}
-  - {fileID: 2800000, guid: a51ec44f1e7cff14ba60b5b6e2076e1a, type: 3}
-  - {fileID: 2800000, guid: a8c91add08b15304dbd97d50ab2c2d25, type: 3}
-  - {fileID: 2800000, guid: 16af180dc29b65240a1290542070ef6b, type: 3}
-  - {fileID: 2800000, guid: fa757d4fd12a6db4fa1d88d49fbc1c50, type: 3}
-  - {fileID: 2800000, guid: a8d3fe2552af4084e859e0d9915062e7, type: 3}
-  - {fileID: 2800000, guid: 942ff4cf5b2eeb14c988225329380538, type: 3}
-  - {fileID: 2800000, guid: 5ca60a414564c6146872c3f01d9e104e, type: 3}
-  - {fileID: 2800000, guid: 93c73d80dabf7d3418f65c3fa2f68fe7, type: 3}
-  - {fileID: 2800000, guid: 93f017af303c2fe418a47b1c29177849, type: 3}
-  correctTexture: {fileID: 0}
 --- !u!4 &828209626
 Transform:
   m_ObjectHideFlags: 0
@@ -603,6 +578,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &828209627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828209624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bcc59c739afea74f88bf7205bb8ec11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Material:
+  - {fileID: 2100000, guid: 9494efdf90959ec468039661ea8d2345, type: 2}
+  - {fileID: 2100000, guid: 5f03548f377c53e48a2aa590040b4475, type: 2}
+  - {fileID: 2100000, guid: 4266cc389ed72dd43a5759272a599da0, type: 2}
+  - {fileID: 2100000, guid: cfc6e1a50432e7041bd996eb666e38cf, type: 2}
+  - {fileID: 2100000, guid: 5cc52db2b9eff074292728407a6e0266, type: 2}
+  - {fileID: 2100000, guid: 21f167c6e1cc29d418c2baba1eae55f8, type: 2}
+  - {fileID: 2100000, guid: 23f88e9fea7733a44a76c69066f26f4e, type: 2}
+  - {fileID: 2100000, guid: f4e1d0ed38aa0cb44bc314b6c39239bd, type: 2}
+  - {fileID: 2100000, guid: 4b4d5b6707c90be429582e8f88866f61, type: 2}
+  - {fileID: 2100000, guid: 9bcc264bde3a9464cba08e2ee09bbd84, type: 2}
+  correctMaterial: {fileID: 0}
 --- !u!1 &871422557
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,8 +965,8 @@ MonoBehaviour:
   enemy: {fileID: 689283671}
   card: {fileID: 4841041335540341862, guid: d272ae13c483330409b960ca65e2a477, type: 3}
   playerCam: {fileID: 321977230}
-  numberContainer: {fileID: 828209625}
-  cardMaterial: {fileID: 2100000, guid: 06fef289375e5d248a724f282ca832a1, type: 2}
+  numberContainer: {fileID: 828209627}
+  cardMaterial: {fileID: 2100000, guid: ca3d8416b3541a540a337f9b9843313e, type: 2}
   NumberOnCard: 0
 --- !u!1001 &1278441437
 PrefabInstance:

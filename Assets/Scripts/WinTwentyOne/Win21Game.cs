@@ -15,6 +15,7 @@ public class Win21Game : MonoBehaviour
     [SerializeField]
     private Material cardMaterial = null;
 
+
     private int minRandom = 1;
     private int maxRandom = 11;
     private int maxPoints = 21;
@@ -72,6 +73,7 @@ public class Win21Game : MonoBehaviour
     {
         int random = Random.Range(minRandom, maxRandom);
         NumberOnCard = random;
+        Debug.Log(NumberOnCard);
         ProduceCard();
         return random;
     }
@@ -97,9 +99,9 @@ public class Win21Game : MonoBehaviour
     {
         numberContainer.GettingTheCorrectTexture(NumberOnCard);
         GameObject itemObject = Instantiate(card, playerCam.transform);
+        card.GetComponentInChildren<Renderer>().material = numberContainer.correctMaterial;
         itemObject.transform.localPosition = new Vector3(cardShift, -0.4f, 0.5f);
         cardShift += 0.5f;
-        cardMaterial.SetTexture("BaseColorMap", numberContainer.correctTexture);
     }
 
     private void GameEnd()
