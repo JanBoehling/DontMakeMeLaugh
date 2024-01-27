@@ -20,9 +20,8 @@ public class TwentyOneBehaviour : BehaviorTreeBase
                 new Selector(new List<Node>()
                 {
                     new Sequenzer(new List<Node>()
-                    {
-                        new CheckCardValueCount(_gameData, 21, 0, true), // CardValue > 21
-                        new TaskOverTwentyOne(_gameData)
+                    { 
+                        new TaskOverTwentyOne(_gameData) // CardValue > 21
                     }),
                     new Sequenzer(new List<Node>()
                     {

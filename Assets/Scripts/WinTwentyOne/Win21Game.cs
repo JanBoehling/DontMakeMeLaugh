@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.SpeedTree.Importer;
 using UnityEngine;
 
 public class Win21Game : MonoBehaviour
@@ -6,10 +9,21 @@ public class Win21Game : MonoBehaviour
     private TwentyOneData data;
     [SerializeField]
     private GameObject enemy;
+    [SerializeField]
+    private GameObject card;
+    [SerializeField]
+    private Camera playerCam;
+    [SerializeField]
+    NumberContainerScriptx numberContainer;
+    [SerializeField]
+    private Material cardMaterial = null;
+
 
     private int minRandom = 1;
     private int maxRandom = 11;
     private int maxPoints = 21;
+    private float cardShiftPlayer;
+    private float cardShiftAI;
     public int NumberOnCard;
     private bool playerAlreadyLost;
     private bool aiAlreadyLost;
@@ -18,6 +32,10 @@ public class Win21Game : MonoBehaviour
 
     private void Start()
     {
+        data.AICardCount = 0;
+        data.AILastCardValue = 0;
+        data.AITotalCardValue = 0;
+        data.PlayerTotalCardValue = 0;
         data.Game = this;   
     }
 
@@ -30,6 +48,7 @@ public class Win21Game : MonoBehaviour
 
         if (playersTurn)
         {
+            Debug.Log("Drawing a Card");
             GameStillPlayable();
         }
         else // AI turn
@@ -59,6 +78,8 @@ public class Win21Game : MonoBehaviour
     {
         int random = Random.Range(minRandom, maxRandom);
         NumberOnCard = random;
+        Debug.Log(NumberOnCard);
+        ProduceCard();
         return random;
     }
 
@@ -75,11 +96,29 @@ public class Win21Game : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             data.PlayerTotalCardValue += DrawCard();
-            Debug.Log(data.PlayerTotalCardValue);
         }
         else if (Input.GetKeyDown(KeyCode.Q))
+        {
             playersTurn = false;
-            return;
+        }
+    }
+
+    private void ProduceCard()
+    {
+        numberContainer.GettingTheCorrectTexture(NumberOnCard);
+        GameObject itemObject = Instantiate(numberContainer.correctGameObject, playerCam.transform);
+
+        if (playersTurn == true)
+        {
+            itemObject.transform.localPosition = new Vector3(cardShiftPlayer, -0.4f, 0.5f);
+            cardShiftPlayer += 0.5f;
+        }
+        else
+        {
+            itemObject.transform.localPosition = new Vector3(cardShiftAI, -0.4f, 1f);
+            cardShiftAI += 0.5f;
+        }
+
     }
 
     private void GameEnd()
