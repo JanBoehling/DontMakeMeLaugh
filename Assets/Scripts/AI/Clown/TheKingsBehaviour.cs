@@ -1,7 +1,7 @@
 using ProjectBarde.BehaviorTree;
 using System.Collections.Generic;
 
-public class KingQueenPeasantBehaviour : BehaviorTreeBase
+public class TheKingsBehaviour : BehaviorTreeBase
 {
     protected override Node SetupTree()
     {
