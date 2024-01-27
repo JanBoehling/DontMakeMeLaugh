@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8a0ce2629039f449fcfbf22b683f8a, type: 3}
   m_Name: TwentyOneData
   m_EditorClassIdentifier: 
-  TotalCardValue: 0
-  CardCount: 0
-  LastCardValue: 0
+  Game: {fileID: 0}
+  AITotalCardValue: 0
+  AICardCount: 0
+  AILastCardValue: 0
+  PlayerTotalCardValue: 0
+  PlayerCardCount: 0
+  PlayerLastCardValue: 0
