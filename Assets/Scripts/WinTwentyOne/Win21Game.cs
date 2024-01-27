@@ -6,18 +6,30 @@ public class Win21Game : MonoBehaviour
     private TwentyOneData data;
     [SerializeField]
     private GameObject enemy;
+    [SerializeField]
+    private GameObject card;
+    [SerializeField]
+    private Camera playerCam;
+    [SerializeField]
+    NumberContainerScriptx numberContainer;
+    [SerializeField]
+    private Material cardMaterial = null;
 
     private int minRandom = 1;
     private int maxRandom = 11;
     private int maxPoints = 21;
+    private float cardShift;
     public int NumberOnCard;
     private bool playerAlreadyLost;
     private bool aiAlreadyLost;
     private bool playersTurn = true;
     private bool gameEnded;
+    private Texture cardTexture;
 
     private void Start()
     {
+        
+        data.PlayerTotalCardValue = 0;
         data.Game = this;   
     }
 
@@ -30,6 +42,7 @@ public class Win21Game : MonoBehaviour
 
         if (playersTurn)
         {
+            Debug.Log("Drawing a Card");
             GameStillPlayable();
         }
         else // AI turn
@@ -59,6 +72,7 @@ public class Win21Game : MonoBehaviour
     {
         int random = Random.Range(minRandom, maxRandom);
         NumberOnCard = random;
+        ProduceCard();
         return random;
     }
 
@@ -73,13 +87,19 @@ public class Win21Game : MonoBehaviour
     private void AnotherCard()
     {
         if (Input.GetKeyDown(KeyCode.E))
-        {
             data.PlayerTotalCardValue += DrawCard();
-            Debug.Log(data.PlayerTotalCardValue);
-        }
         else if (Input.GetKeyDown(KeyCode.Q))
             playersTurn = false;
             return;
+    }
+
+    private void ProduceCard()
+    {
+        numberContainer.GettingTheCorrectTexture(NumberOnCard);
+        GameObject itemObject = Instantiate(card, playerCam.transform);
+        itemObject.transform.localPosition = new Vector3(cardShift, -0.4f, 0.5f);
+        cardShift += 0.5f;
+        cardMaterial.SetTexture("BaseColorMap", numberContainer.correctTexture);
     }
 
     private void GameEnd()
