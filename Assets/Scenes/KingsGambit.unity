@@ -169,6 +169,8 @@ MonoBehaviour:
   Cost: 1
   Duration: 5
   Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
 --- !u!114 &132606977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +195,8 @@ MonoBehaviour:
   Cost: 1
   Duration: 5
   Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
 --- !u!114 &132606978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +221,8 @@ MonoBehaviour:
   Cost: 1
   Duration: 5
   Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
 --- !u!114 &132606979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +298,8 @@ MonoBehaviour:
   Cost: 1
   Duration: 5
   Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
 --- !u!114 &132606983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +324,8 @@ MonoBehaviour:
   Cost: 3
   Duration: 5
   Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
 --- !u!114 &132606984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,6 +348,8 @@ MonoBehaviour:
   Cost: 10
   Duration: 5
   Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
 --- !u!114 &132606985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +374,8 @@ MonoBehaviour:
   Cost: 3
   Duration: 5
   Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
 --- !u!114 &132606986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +400,8 @@ MonoBehaviour:
   Cost: 5
   Duration: 5
   Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
 --- !u!1 &202623662
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa443cf70f6756488f2585d0c648ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorthOfTheCard: 0
+  CardSO: {fileID: 0}
+  Game: {fileID: 0}
 --- !u!114 &324372015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729,6 +746,58 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634542737}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &664550424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 664550426}
+  - component: {fileID: 664550425}
+  m_Layer: 0
+  m_Name: TheKingsGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &664550425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664550424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b55d538dcc2574f85735f9ef6dab74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 919132149155446097, guid: 421ed4aac15651b4fa0dcf8b94de3e5b,
+    type: 3}
+  cardFrontMaterial: {fileID: 2100000, guid: abdf0cf6067af9c4ca830056aa977a6e, type: 2}
+  enemy: {fileID: 132606979}
+  possibleCards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!4 &664550426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664550424}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1155,7 +1224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa443cf70f6756488f2585d0c648ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorthOfTheCard: 0
+  CardSO: {fileID: 0}
+  Game: {fileID: 0}
 --- !u!1 &1132506819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,7 +1685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa443cf70f6756488f2585d0c648ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorthOfTheCard: 0
+  CardSO: {fileID: 0}
+  Game: {fileID: 0}
 --- !u!114 &1315423769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1941,7 +2012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa443cf70f6756488f2585d0c648ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorthOfTheCard: 0
+  CardSO: {fileID: 0}
+  Game: {fileID: 0}
 --- !u!114 &1602653963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2088,7 +2160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa443cf70f6756488f2585d0c648ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorthOfTheCard: 0
+  CardSO: {fileID: 0}
+  Game: {fileID: 0}
 --- !u!114 &1913254815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2192,3 +2265,4 @@ SceneRoots:
   - {fileID: 634542740}
   - {fileID: 1369065410}
   - {fileID: 132606980}
+  - {fileID: 664550426}
