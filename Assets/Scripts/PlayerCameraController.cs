@@ -37,7 +37,6 @@ public class PlayerCameraController : MonoBehaviour
         yRot += mouseX * sensitivity;
         xRot -= mouseY * sensitivity;
 
-        //if (Input.GetMouseButton(0))
         xRot = Mathf.SmoothDamp(xRot, 0f, ref smoothDampVelocityX, 1 - springBackSpeed);
         yRot = Mathf.SmoothDamp(yRot, 0f, ref smoothDampVelocityY, 1 - springBackSpeed);
 
@@ -49,5 +48,4 @@ public class PlayerCameraController : MonoBehaviour
     {
         mainCam.localRotation = Quaternion.Euler(xRot, yRot, 0f);
     }
-
 }
