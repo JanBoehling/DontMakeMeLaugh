@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.1177, g: 324.74368, b: 429.81012, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -590,18 +590,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcc59c739afea74f88bf7205bb8ec11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Material:
-  - {fileID: 2100000, guid: 9494efdf90959ec468039661ea8d2345, type: 2}
-  - {fileID: 2100000, guid: 5f03548f377c53e48a2aa590040b4475, type: 2}
-  - {fileID: 2100000, guid: 4266cc389ed72dd43a5759272a599da0, type: 2}
-  - {fileID: 2100000, guid: cfc6e1a50432e7041bd996eb666e38cf, type: 2}
-  - {fileID: 2100000, guid: 5cc52db2b9eff074292728407a6e0266, type: 2}
-  - {fileID: 2100000, guid: 21f167c6e1cc29d418c2baba1eae55f8, type: 2}
-  - {fileID: 2100000, guid: 23f88e9fea7733a44a76c69066f26f4e, type: 2}
-  - {fileID: 2100000, guid: f4e1d0ed38aa0cb44bc314b6c39239bd, type: 2}
-  - {fileID: 2100000, guid: 4b4d5b6707c90be429582e8f88866f61, type: 2}
-  - {fileID: 2100000, guid: 9bcc264bde3a9464cba08e2ee09bbd84, type: 2}
-  correctMaterial: {fileID: 0}
+  GameObjectCards:
+  - {fileID: 2183193601930716201, guid: 4e672941b1812e34988ed757a46d4251, type: 3}
+  - {fileID: 2183193601930716201, guid: 4e672941b1812e34988ed757a46d4251, type: 3}
+  - {fileID: 4410412557392062741, guid: 19c2c9a98db04b044819de118cdff0cf, type: 3}
+  - {fileID: 1305193536112378643, guid: 94d47e5f6a74cb04a95ca8e6e2100fd9, type: 3}
+  - {fileID: 3256256908007167404, guid: cc98709ba89e57a4d8c5c73b353f885b, type: 3}
+  - {fileID: 7496178561950879140, guid: ee213f7e81363df41acc5a84f8cb2325, type: 3}
+  - {fileID: 3637276173432338572, guid: 55fe841c0a412b94ebb15aba63ddef5d, type: 3}
+  - {fileID: 8316590354116371190, guid: 20f0808a36eedd749917ea9afa74cef1, type: 3}
+  - {fileID: 8162225728179395328, guid: 6658a6c076935344d871a2e463bfe17d, type: 3}
+  - {fileID: 9185819494164737920, guid: fa30c713b2ae0f5488bbf156d9001fc5, type: 3}
+  - {fileID: 416680558647835512, guid: ae021a19490d7a543b9fd32e9f67905b, type: 3}
+  correctGameObject: {fileID: 0}
 --- !u!1 &871422557
 GameObject:
   m_ObjectHideFlags: 0

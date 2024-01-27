@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class NumberContainerScriptx : MonoBehaviour
 {
-    public Material[] Material;
-    public Material correctMaterial;
+    public GameObject[] GameObjectCards;
+    public GameObject correctGameObject;
 
     public void GettingTheCorrectTexture(int drawnNumber)
     {
-        correctMaterial = Material[drawnNumber -1];
+        correctGameObject = GameObjectCards[drawnNumber];
     }
 }

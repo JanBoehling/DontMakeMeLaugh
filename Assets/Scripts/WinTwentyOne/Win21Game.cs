@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.SpeedTree.Importer;
 using UnityEngine;
 
 public class Win21Game : MonoBehaviour
@@ -25,7 +28,6 @@ public class Win21Game : MonoBehaviour
     private bool aiAlreadyLost;
     private bool playersTurn = true;
     private bool gameEnded;
-    private Texture cardTexture;
 
     private void Start()
     {
@@ -89,19 +91,21 @@ public class Win21Game : MonoBehaviour
     private void AnotherCard()
     {
         if (Input.GetKeyDown(KeyCode.E))
+        {
             data.PlayerTotalCardValue += DrawCard();
+        }
         else if (Input.GetKeyDown(KeyCode.Q))
+        {
             playersTurn = false;
-            return;
+        }
     }
 
     private void ProduceCard()
     {
-        numberContainer.GettingTheCorrectTexture(NumberOnCard);
-        GameObject itemObject = Instantiate(card, playerCam.transform);
-        card.GetComponentInChildren<Renderer>().material = numberContainer.correctMaterial;
-        itemObject.transform.localPosition = new Vector3(cardShift, -0.4f, 0.5f);
-        cardShift += 0.5f;
+            numberContainer.GettingTheCorrectTexture(NumberOnCard);
+            GameObject itemObject = Instantiate(numberContainer.correctGameObject, playerCam.transform);
+            itemObject.transform.localPosition = new Vector3(cardShift, -0.4f, 0.5f);
+            cardShift += 0.5f;
     }
 
     private void GameEnd()
