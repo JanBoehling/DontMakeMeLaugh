@@ -22,7 +22,8 @@ public class Win21Game : MonoBehaviour
     private int minRandom = 1;
     private int maxRandom = 11;
     private int maxPoints = 21;
-    private float cardShift;
+    private float cardShiftPlayer;
+    private float cardShiftAI;
     public int NumberOnCard;
     private bool playerAlreadyLost;
     private bool aiAlreadyLost;
@@ -104,10 +105,20 @@ public class Win21Game : MonoBehaviour
 
     private void ProduceCard()
     {
-            numberContainer.GettingTheCorrectTexture(NumberOnCard);
-            GameObject itemObject = Instantiate(numberContainer.correctGameObject, playerCam.transform);
-            itemObject.transform.localPosition = new Vector3(cardShift, -0.4f, 0.5f);
-            cardShift += 0.5f;
+        numberContainer.GettingTheCorrectTexture(NumberOnCard);
+        GameObject itemObject = Instantiate(numberContainer.correctGameObject, playerCam.transform);
+
+        if (playersTurn == true)
+        {
+            itemObject.transform.localPosition = new Vector3(cardShiftPlayer, -0.4f, 0.5f);
+            cardShiftPlayer += 0.5f;
+        }
+        else
+        {
+            itemObject.transform.localPosition = new Vector3(cardShiftAI, -0.4f, 1f);
+            cardShiftAI += 0.5f;
+        }
+
     }
 
     private void GameEnd()
