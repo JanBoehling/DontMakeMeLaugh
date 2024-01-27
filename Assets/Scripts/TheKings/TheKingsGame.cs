@@ -9,13 +9,16 @@ public class TheKingsGame : MonoBehaviour
 
     [SerializeField] private CardSO[] possibleCards = new CardSO[3];
 
-    private readonly List<CardSO> playerCards = new(5);
-    private readonly List<CardSO> AICards = new(5);
+    private List<CardSO> playerCards = new(5);
+    private List<CardSO> AICards = new(5);
 
-    private readonly List<GameObject> playerCardObjects = new(5);
-    private readonly List<GameObject> AICardObjects = new(5);
+    private List<GameObject> playerCardObjects = new(5);
+    private List<GameObject> AICardObjects = new(5);
     private bool playerPlayed;
     private bool enemyPlayed;
+    private bool gameStarted = false;
+
+    public bool GameFinished;
 
     private void Start()
     {
@@ -25,10 +28,16 @@ public class TheKingsGame : MonoBehaviour
 
     public void StartGame()
     {
-        DealCards(playerCards, playerCardObjects);
-        DealCards(AICards, AICardObjects);
+        if (!gameStarted) 
+        {
+            if (TheKingsController.EnemyAgent == null)
+                TheKingsController.EnemyAgent = enemy;
+            DealCards(playerCards, playerCardObjects);
+            DealCards(AICards, AICardObjects);
 
-        enemy.GetGameData().AICards = AICards;
+            enemy.GetGameData().AICards = AICards;
+            gameStarted = true;
+        }
     }
 
     // Phase 1: every participant gets five cards
@@ -85,13 +94,16 @@ public class TheKingsGame : MonoBehaviour
 
         playerPlayed = false;
         enemyPlayed = false;
+
+        if (!hasWinner)
+            StartGame();
+        else
+            GameFinished = true;
+
         playerCards.Clear();
         playerCardObjects.Clear();
         AICards.Clear();
         AICardObjects.Clear();
-
-        if (!hasWinner)
-            StartGame();
     }
 
     public List<CardSO> GetPlayerCards() => playerCards;

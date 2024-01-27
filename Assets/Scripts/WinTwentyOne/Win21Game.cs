@@ -29,7 +29,7 @@ public class Win21Game : MonoBehaviour
     private bool playerAlreadyLost;
     private bool aiAlreadyLost;
     private bool playersTurn = true;
-    private bool gameEnded;
+    public bool GameEnded;
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class Win21Game : MonoBehaviour
 
     private void Update()
     {
-        if (gameEnded) return;
+        if (GameEnded) return;
 
         if (playerAlreadyLost || aiAlreadyLost)
             GameEnd();
@@ -157,6 +157,6 @@ public class Win21Game : MonoBehaviour
             //Noone Wins
         }
 
-        gameEnded = true;
+        GameEnded = true;
     }
 }

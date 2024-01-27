@@ -16,7 +16,14 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private AudioMixer _mixer;
 
+    private GameController _controller;
     private int _currentPage = 0;
+
+    private void Start()
+    {
+        _controller = GetComponent<GameController>();
+        _controller.OnStart();
+    }
 
     public void QuitGame()
     {
@@ -31,7 +38,8 @@ public class MainMenu : MonoBehaviour
     {
         if(_dollyCart.m_Path.MaxPos - 1f <= _dollyCart.m_Position)
         {
-            // Start Game 1 (RockPaperSiccors)
+            //_controller.OnRockPaperSissorsStart(); // Unkomment if finished | Delete other call
+            _controller.OnWin21GameStart(); // TEST DEBUG
         }
     }
 
