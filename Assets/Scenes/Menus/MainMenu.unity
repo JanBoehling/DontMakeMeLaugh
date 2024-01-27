@@ -157,10 +157,10 @@ MonoBehaviour:
   m_Waypoints:
   - position: {x: 0, y: 0, z: 0}
     roll: 0
-  - position: {x: 1.0250918, y: 0.008808992, z: 2.4401162}
-    roll: 3.69
-  - position: {x: 1.0589389, y: 0.14551552, z: 3.2566924}
-    roll: 8.77
+  - position: {x: 0.90088415, y: -0.039344642, z: 2.2857249}
+    roll: 2
+  - position: {x: 0.96734047, y: 0.10937689, z: 3.186983}
+    roll: 3
 --- !u!4 &136759485
 Transform:
   m_ObjectHideFlags: 0
@@ -832,21 +832,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room
       objectReference: {fileID: 0}
-    - target: {fileID: 1625981395457630718, guid: 5eca96f47a8e5e44c913fca86817133d,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 79577.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 3258138004580315465, guid: 5eca96f47a8e5e44c913fca86817133d,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 20000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3356368803096868561, guid: 5eca96f47a8e5e44c913fca86817133d,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 6366.1978
-      objectReference: {fileID: 0}
     - target: {fileID: 4637978543920509264, guid: 5eca96f47a8e5e44c913fca86817133d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -896,21 +881,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5953315020905798563, guid: 5eca96f47a8e5e44c913fca86817133d,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7896221030731170702, guid: 5eca96f47a8e5e44c913fca86817133d,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8307336255703422423, guid: 5eca96f47a8e5e44c913fca86817133d,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 79.57747
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2478,7 +2448,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516090697}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17955518, y: 0.2917473, z: -0.040585965, w: 0.9386141}
+  m_LocalRotation: {x: 0.18903883, y: 0.28152177, z: -0.04775412, w: 0.93953675}
   m_LocalPosition: {x: -1.611, y: -0.328, z: -3.461}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2969,7 +2939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139700021}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15391901, y: 0.41286185, z: -0.0030796998, w: 0.8976885}
+  m_LocalRotation: {x: 0.1641825, y: 0.4030442, z: -0.009265634, w: 0.90028536}
   m_LocalPosition: {x: -1.611, y: -0.328, z: -3.461}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
