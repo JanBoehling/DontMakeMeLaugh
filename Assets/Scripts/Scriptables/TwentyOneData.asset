@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TwentyOneData
   m_EditorClassIdentifier: 
   Game: {fileID: 0}
-  AITotalCardValue: 0
-  AICardCount: 0
-  AILastCardValue: 0
-  PlayerTotalCardValue: 0
+  AITotalCardValue: 23
+  AICardCount: 3
+  AILastCardValue: 9
+  PlayerTotalCardValue: 16
   PlayerCardCount: 0
   PlayerLastCardValue: 0

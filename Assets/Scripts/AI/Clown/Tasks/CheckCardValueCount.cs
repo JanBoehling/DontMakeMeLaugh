@@ -19,23 +19,41 @@ internal class CheckCardValueCount : Node
 
     public override NodeState Evaluate()
     {
-        if (_cardCount == 0 & _gameData.AITotalCardValue == 21)
-            // Show directly
-            return NodeState.Success;
-
         if (_valuesGreaterThen)
-        {
-            if (_gameData.AITotalCardValue < _cardValue && _gameData.AICardCount <= _cardCount)
-                return NodeState.Success;
-            else
-                return NodeState.Failed;
-        }
-        else
         {
             if (_gameData.AITotalCardValue > _cardValue && _gameData.AICardCount > _cardCount)
                 return NodeState.Success;
             else
                 return NodeState.Failed;
         }
+        else
+        {
+            if (_gameData.AITotalCardValue < _cardValue && _gameData.AICardCount <= _cardCount)
+                return NodeState.Success;
+            else
+                return NodeState.Failed;
+        }
+
+
+
+
+        //if (_cardCount == 0 & _gameData.AITotalCardValue == 21)
+        //     Show directly
+        //    return NodeState.Success;
+
+        //if (_valuesGreaterThen)
+        //{
+        //    if (_gameData.AITotalCardValue < _cardValue && _gameData.AICardCount <= _cardCount)
+        //        return NodeState.Success;
+        //    else
+        //        return NodeState.Failed;
+        //}
+        //else
+        //{
+        //    if (_gameData.AITotalCardValue > _cardValue && _gameData.AICardCount > _cardCount)
+        //        return NodeState.Success;
+        //    else
+        //        return NodeState.Failed;
+        //}
     }
 }

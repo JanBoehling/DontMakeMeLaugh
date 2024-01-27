@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
     {
         if(_dollyCart.m_Path.MaxPos - 1f <= _dollyCart.m_Position)
         {
-            SceneManager.LoadScene(1);
+            // Start Game 1 (RockPaperSiccors)
         }
     }
 

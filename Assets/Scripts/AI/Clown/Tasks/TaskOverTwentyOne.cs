@@ -14,8 +14,8 @@ public class TaskOverTwentyOne : Node
         if (!_data.Game.CheckStillPlayable(_data.AITotalCardValue))
         {
             _data.Game.OnAIOverFitted();
-            return base.Evaluate();
+            return NodeState.Success;
         }
-        return NodeState.Success;
+        return base.Evaluate();
     }
 }

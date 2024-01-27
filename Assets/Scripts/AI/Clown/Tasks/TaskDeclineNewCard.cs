@@ -11,6 +11,6 @@ public class TaskDeclineNewCard : Node
     public override NodeState Evaluate()
     {
         _data.Game.OnAIFinishedDrawing();
-        return base.Evaluate();
+        return NodeState.Success;
     }
 }

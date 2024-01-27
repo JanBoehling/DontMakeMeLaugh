@@ -31,7 +31,9 @@ public class Win21Game : MonoBehaviour
 
     private void Start()
     {
-        
+        data.AICardCount = 0;
+        data.AILastCardValue = 0;
+        data.AITotalCardValue = 0;
         data.PlayerTotalCardValue = 0;
         data.Game = this;   
     }
