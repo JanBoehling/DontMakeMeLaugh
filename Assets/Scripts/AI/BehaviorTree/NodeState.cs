@@ -1,5 +1,5 @@
 ﻿
-namespace ProjectBarde.BehaviorTree
+namespace BehaviorTree
 {
     public enum NodeState
     {

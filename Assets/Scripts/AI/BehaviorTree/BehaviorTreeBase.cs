@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-namespace ProjectBarde.BehaviorTree
+namespace BehaviorTree
 {
     public class BehaviorTreeBase : MonoBehaviour
     {

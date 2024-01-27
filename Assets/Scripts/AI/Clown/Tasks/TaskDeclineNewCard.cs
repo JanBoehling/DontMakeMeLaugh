@@ -1,4 +1,4 @@
-﻿using ProjectBarde.BehaviorTree;
+﻿using BehaviorTree;
 
 public class TaskDeclineNewCard : Node
 {

@@ -1,4 +1,4 @@
-﻿using ProjectBarde.BehaviorTree;
+﻿using BehaviorTree;
 using UnityEngine;
 
 internal class CheckCardValueCount : Node

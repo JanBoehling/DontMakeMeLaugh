@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProjectBarde.BehaviorTree
+namespace BehaviorTree
 {
     public class Sequenzer : Node
     {

@@ -1,14 +1,18 @@
-using ProjectBarde.BehaviorTree;
-using System.Collections.Generic;
+using GOAP;
+using UnityEngine;
 
-public class TheKingsBehaviour : BehaviorTreeBase
+public class TheKingsBehaviour : Agent
 {
-    protected override Node SetupTree()
-    {
-        Node root = new Sequenzer(new List<Node>()
-        {
+    [SerializeField]
+    private TheKingsData
 
-        });
-        return root;
+    protected override void Start()
+    {
+        AgentBeliefs = new WorldStates();
+        AgentBeliefs.ModifyState();
+
+        SubGoal goal = new("win", 1, false);
+        Goals.Add(goal, 1);
+        base.Start();
     }
 }
