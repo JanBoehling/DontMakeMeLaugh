@@ -1,5 +1,6 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
@@ -12,6 +13,8 @@ public class MainMenu : MonoBehaviour
     private GameObject _creditsCanvas;
     [SerializeField]
     private CinemachineDollyCart _dollyCart;
+    [SerializeField]
+    private AudioMixer _mixer;
 
     private int _currentPage = 0;
 
@@ -31,6 +34,20 @@ public class MainMenu : MonoBehaviour
             // Start Game 1 (RockPaperSiccors)
         }
     }
+
+    public void OpenUrl(string url)
+    {
+        try
+        {
+            System.Diagnostics.Process.Start(url);
+        }
+        catch (System.Exception)
+        {
+            Debug.LogError("Could not open URL");
+        }
+    }
+
+    public void SetVolume(float volume) => _mixer.SetFloat("MasterVolume", volume);
 
     public void OnStartPressed()
     {
