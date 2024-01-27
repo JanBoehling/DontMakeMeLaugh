@@ -9,13 +9,15 @@ public class TheKingsGame : MonoBehaviour
 
     [SerializeField] private CardSO[] possibleCards = new CardSO[3];
 
-    private readonly List<CardSO> playerCards = new(5);
-    private readonly List<CardSO> AICards = new(5);
+    private List<CardSO> playerCards = new(5);
+    private List<CardSO> AICards = new(5);
 
-    private readonly List<GameObject> playerCardObjects = new(5);
-    private readonly List<GameObject> AICardObjects = new(5);
+    private List<GameObject> playerCardObjects = new(5);
+    private List<GameObject> AICardObjects = new(5);
     private bool playerPlayed;
     private bool enemyPlayed;
+
+    public bool GameFinished;
 
     private void Start()
     {
@@ -25,6 +27,8 @@ public class TheKingsGame : MonoBehaviour
 
     public void StartGame()
     {
+        if (TheKingsController.EnemyAgent == null)
+            TheKingsController.EnemyAgent = enemy;
         DealCards(playerCards, playerCardObjects);
         DealCards(AICards, AICardObjects);
 
@@ -92,6 +96,8 @@ public class TheKingsGame : MonoBehaviour
 
         if (!hasWinner)
             StartGame();
+        else
+            GameFinished = true;
     }
 
     public List<CardSO> GetPlayerCards() => playerCards;

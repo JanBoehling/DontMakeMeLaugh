@@ -1871,12 +1871,20 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 914714967}
-  - component: {fileID: 914714966}
-  - component: {fileID: 914714965}
-  - component: {fileID: 914714964}
+  - component: {fileID: 914714969}
   - component: {fileID: 914714963}
+  - component: {fileID: 914714968}
+  - component: {fileID: 914714970}
+  - component: {fileID: 914714978}
+  - component: {fileID: 914714977}
+  - component: {fileID: 914714976}
+  - component: {fileID: 914714975}
+  - component: {fileID: 914714974}
+  - component: {fileID: 914714973}
+  - component: {fileID: 914714972}
+  - component: {fileID: 914714971}
   m_Layer: 0
-  m_Name: 'EnemyTest '
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1895,80 +1903,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameData: {fileID: 11400000, guid: 35982292eff5a3c4ca8424813cd47a59, type: 2}
---- !u!65 &914714964
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914714962}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &914714965
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914714962}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &914714966
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914714962}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &914714967
 Transform:
   m_ObjectHideFlags: 0
@@ -1978,12 +1912,267 @@ Transform:
   m_GameObject: {fileID: 914714962}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.65, y: 0, z: 0}
+  m_LocalPosition: {x: 0.6099, y: -1.396, z: 1.0239}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &914714968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914714962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef911a11d6817004aaadab3b1bf1fee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Actions: []
+  _data: {fileID: 11400000, guid: 4271e21a651e76b4e81ce5eb451738e2, type: 2}
+--- !u!114 &914714969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914714962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16769c14e9dc5ca45ba93ed796d744db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateCount: 3
+--- !u!114 &914714970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914714962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3548979bcd9a3ba4b8e292f74ff6b0e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: PlayKing
+  _preCons:
+  - Key: hasKingCards
+    Value: 1
+  - Key: playerPlayedQueen
+    Value: 1
+  _afterEffs:
+  - Key: gainPoint
+    Value: 1
+  Cost: 1
+  Duration: 5
+  Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
+--- !u!114 &914714971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914714962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4a2207689c5dc47bf81f49fbfb5c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: WinGame
+  _preCons:
+  - Key: hasPoints
+    Value: 3
+  _afterEffs:
+  - Key: win
+    Value: 1
+  Cost: 1
+  Duration: 5
+  Running: 0
+--- !u!114 &914714972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914714962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707bef8d2206ccd4e9af1889462ce9c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: PlayPeasent
+  _preCons:
+  - Key: hasPeasantCard
+    Value: 1
+  _afterEffs:
+  - Key: lostLeast
+    Value: 1
+  Cost: 10
+  Duration: 5
+  Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
+--- !u!114 &914714973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914714962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707bef8d2206ccd4e9af1889462ce9c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: PlayPeasent
+  _preCons:
+  - Key: hasPeasantCard
+    Value: 1
+  - Key: playerPlayedKing
+    Value: 1
+  _afterEffs:
+  - Key: lostLeast
+    Value: 1
+  Cost: 1
+  Duration: 5
+  Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
+--- !u!114 &914714974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914714962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dec2a942e40084ea13bb5756fb7975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: PlayQueen
+  _preCons:
+  - Key: hasQueenCards
+    Value: 1
+  - Key: playerPlayedKing
+    Value: 1
+  _afterEffs:
+  - Key: lostLeast
+    Value: 1
+  Cost: 3
+  Duration: 5
+  Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
+--- !u!114 &914714975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914714962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dec2a942e40084ea13bb5756fb7975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: PlayQueen
+  _preCons:
+  - Key: hasQueenCards
+    Value: 1
+  - Key: playerPlayedQueen
+    Value: 1
+  _afterEffs:
+  - Key: draw
+    Value: 1
+  Cost: 1
+  Duration: 5
+  Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
+--- !u!114 &914714976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914714962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dec2a942e40084ea13bb5756fb7975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: PlayQueen
+  _preCons:
+  - Key: hasQueenCards
+    Value: 1
+  - Key: playerPlayedPeasent
+    Value: 1
+  _afterEffs:
+  - Key: gainPoint
+    Value: 1
+  Cost: 1
+  Duration: 5
+  Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
+--- !u!114 &914714977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914714962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3548979bcd9a3ba4b8e292f74ff6b0e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: PlayKing
+  _preCons:
+  - Key: hasKingCards
+    Value: 1
+  - Key: playerPlayedKing
+    Value: 1
+  _afterEffs:
+  - Key: draw
+    Value: 1
+  Cost: 5
+  Duration: 5
+  Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
+--- !u!114 &914714978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914714962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3548979bcd9a3ba4b8e292f74ff6b0e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: PlayKing
+  _preCons:
+  - Key: hasKingCards
+    Value: 1
+  - Key: playerPlayedPeasent
+    Value: 1
+  _afterEffs:
+  - Key: gainPoint
+    Value: 1
+  Cost: 3
+  Duration: 5
+  Running: 0
+  _game: {fileID: 0}
+  _agent: {fileID: 0}
 --- !u!1 &933294644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,6 +2186,7 @@ GameObject:
   - component: {fileID: 933294646}
   - component: {fileID: 933294645}
   - component: {fileID: 933294649}
+  - component: {fileID: 933294650}
   m_Layer: 5
   m_Name: MainCanvas
   m_TagString: Untagged
@@ -2105,6 +2295,25 @@ MonoBehaviour:
   _settingsCanvas: {fileID: 1382264723}
   _creditsCanvas: {fileID: 754537466}
   _dollyCart: {fileID: 2139700022}
+  _mixer: {fileID: 0}
+--- !u!114 &933294650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933294644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67f5e26b130320c4087bb75e0cfa0e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerObject: {fileID: 1582967496}
+  _enemyObject: {fileID: 914714962}
+  _rockPaperSissorsGameObjects: []
+  _twentyOneWinGameObjects:
+  - {fileID: 290239805}
+  _theKingsGameObjects: []
 --- !u!1 &1017414343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,8 +3175,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1582967498}
   - component: {fileID: 1582967497}
+  - component: {fileID: 1582967499}
   m_Layer: 0
-  m_Name: PlayerTest
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2992,6 +3202,7 @@ MonoBehaviour:
   numberContainer: {fileID: 505788551}
   cardMaterial: {fileID: 2100000, guid: ca3d8416b3541a540a337f9b9843313e, type: 2}
   NumberOnCard: 0
+  GameEnded: 0
 --- !u!4 &1582967498
 Transform:
   m_ObjectHideFlags: 0
@@ -3007,6 +3218,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -9.616, z: 0}
+--- !u!114 &1582967499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582967496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b55d538dcc2574f85735f9ef6dab74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 919132149155446097, guid: 421ed4aac15651b4fa0dcf8b94de3e5b,
+    type: 3}
+  cardFrontMaterial: {fileID: 2100000, guid: abdf0cf6067af9c4ca830056aa977a6e, type: 2}
+  enemy: {fileID: 914714968}
+  possibleCards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  GameFinished: 0
 --- !u!1 &1611263348
 GameObject:
   m_ObjectHideFlags: 0
