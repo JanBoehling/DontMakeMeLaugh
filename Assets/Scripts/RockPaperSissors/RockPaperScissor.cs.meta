@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a7ab112e32f19ce4ba1ae7e5dfcc2eb6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - data: {fileID: 11400000, guid: d5562965c6a1246408f0bf429e2487ae, type: 2}
+  - Card: {fileID: 4841041335540341862, guid: d272ae13c483330409b960ca65e2a477, type: 3}
+  - RockPrint: {fileID: 2800000, guid: 552b47b594b384d4f898f1703447972e, type: 3}
+  - PaperPrint: {fileID: 2800000, guid: 481fe6baf8cef7c4aaf0e0c471b946a9, type: 3}
+  - ScissorPrint: {fileID: 2800000, guid: 32075fc8dc7b1a349a9d090ece0712c6, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -5,5 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptables/RockPaperSissorsData")]
 public class RockPaperSissorsData : ScriptableObject
 {
-    
+    public int playerPoints;
+    public int opponentPoints;
 }
