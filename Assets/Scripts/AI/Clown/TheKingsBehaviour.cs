@@ -4,12 +4,12 @@ using UnityEngine;
 public class TheKingsBehaviour : Agent
 {
     [SerializeField]
-    private TheKingsData
+    private TheKingsData _data;
 
     protected override void Start()
     {
         AgentBeliefs = new WorldStates();
-        AgentBeliefs.ModifyState();
+        //AgentBeliefs.ModifyState();
 
         SubGoal goal = new("win", 1, false);
         Goals.Add(goal, 1);
