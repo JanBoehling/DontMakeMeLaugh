@@ -1,8 +1,8 @@
-using ProjectBarde.BehaviorTree;
+using BehaviorTree;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StonePaperSissorBehaviour : BehaviorTreeBase
+public class RockPaperSissorBehaviour : BehaviorTreeBase
 {
     [SerializeField]
     private int _stateCount = 3;

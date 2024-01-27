@@ -1,4 +1,4 @@
-using ProjectBarde.BehaviorTree;
+using BehaviorTree;
 using System.Collections.Generic;
 using UnityEngine;
 
