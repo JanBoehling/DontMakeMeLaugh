@@ -1,4 +1,6 @@
+using Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class MainMenu : MonoBehaviour
     private GameObject _settingsCanvas;
     [SerializeField]
     private GameObject _creditsCanvas;
+    [SerializeField]
+    private CinemachineDollyCart _dollyCart;
 
     private int _currentPage = 0;
 
@@ -18,6 +22,20 @@ public class MainMenu : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void LateUpdate()
+    {
+        if(_dollyCart.m_Path.MaxPos - 1f <= _dollyCart.m_Position)
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
+
+    public void OnStartPressed()
+    {
+        _dollyCart.m_Speed = 0.1f;
+        DisableAllPages();
     }
 
     public void ChangePage(int index)

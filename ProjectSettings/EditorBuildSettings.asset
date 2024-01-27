@@ -6,7 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menus/MainMenu.unity
+    guid: d4e5d834b12c865458c2a88f6140e731
+  - enabled: 1
     path: Assets/Scenes/OutdoorsScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
+  - enabled: 1
+    path: Assets/Scenes/WIn21_Test.unity
+    guid: ca397f9d18849e943bd224e46d16eda7
+  - enabled: 1
+    path: Assets/Scenes/KingsGambit.unity
+    guid: 044ad843b2a390c4e92e4b5b51dfde73
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
