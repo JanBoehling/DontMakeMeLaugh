@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.SpeedTree.Importer;
@@ -12,7 +13,7 @@ public class Win21Game : MonoBehaviour
     [SerializeField]
     private GameObject card;
     [SerializeField]
-    private Camera playerCam;
+    private Transform cardSpawnPoint;
     [SerializeField]
     NumberContainerScriptx numberContainer;
     [SerializeField]
@@ -106,17 +107,21 @@ public class Win21Game : MonoBehaviour
     private void ProduceCard()
     {
         numberContainer.GettingTheCorrectTexture(NumberOnCard);
-        GameObject itemObject = Instantiate(numberContainer.correctGameObject, playerCam.transform);
+        GameObject itemObject = Instantiate(numberContainer.correctGameObject, cardSpawnPoint);
 
         if (playersTurn == true)
         {
-            itemObject.transform.localPosition = new Vector3(cardShiftPlayer, -0.4f, 0.5f);
-            cardShiftPlayer += 0.5f;
+            itemObject.transform.localPosition = new Vector3(cardShiftPlayer, 0, 0);
+            itemObject.transform.eulerAngles = new Vector3(0, 180, 0);
+            itemObject.transform.localScale = new Vector3(0.11f, 0.11f, 0.11f);
+            cardShiftPlayer += 0.3f;
         }
         else
         {
-            itemObject.transform.localPosition = new Vector3(cardShiftAI, -0.4f, 1f);
-            cardShiftAI += 0.5f;
+            itemObject.transform.localPosition = new Vector3(cardShiftAI, 0, 0.5f);
+            itemObject.transform.eulerAngles = Vector3.zero;
+            itemObject.transform.localScale = new Vector3(0.11f, 0.11f, 0.11f);
+            cardShiftAI += 0.3f;
         }
 
     }
