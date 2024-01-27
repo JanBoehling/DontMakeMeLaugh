@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class TheKingsBehaviour : Agent
 {
-    [SerializeField]
-    private TheKingsData _data;
+    //[SerializeField]
+    //private TheKingsData
 
     protected override void Start()
     {
