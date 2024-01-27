@@ -3,16 +3,32 @@ using UnityEngine;
 
 public class TheKingsBehaviour : Agent
 {
-    //[SerializeField]
-    //private TheKingsData
+    [SerializeField]
+    private TheKingsData _data;
 
     protected override void Start()
     {
         AgentBeliefs = new WorldStates();
-        //AgentBeliefs.ModifyState();
+        foreach (var item in _data.AICards)
+        {
+            if (item.name == "King")
+                AgentBeliefs.ModifyState("hasKingCards", 1);
 
-        SubGoal goal = new("win", 1, false);
-        Goals.Add(goal, 1);
+            if (item.name == "Queen")
+                AgentBeliefs.ModifyState("hasQueenCards", 1);
+
+            if (item.name == "Peasent")
+                AgentBeliefs.ModifyState("hasPeasentCards", 1);
+        }
+
+        SubGoal winGoal = new("win", 4, false);
+        Goals.Add(winGoal, 4);
+        SubGoal gainPointGoal = new("gainPoint", 3, false);
+        Goals.Add(gainPointGoal, 3);
+        SubGoal drawGoal = new("draw", 2, false);
+        Goals.Add(drawGoal, 2);
+        SubGoal lostLeastGoal = new("lostLeast", 1, false);
+        Goals.Add(lostLeastGoal, 1);
         base.Start();
     }
 }
