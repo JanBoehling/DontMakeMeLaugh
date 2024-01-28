@@ -6835,6 +6835,7 @@ MonoBehaviour:
   - LaughingGas
   - NooneBelievesYou
   - FingerAsFingerFood
+  audioSource: {fileID: 1409575706}
   AudioPlayEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +9,8 @@ public class ClownVoicelinePlayer : MonoBehaviour
     [SerializeField] private float voicelineDelay = 10f;
     [SerializeField] private GameObject enemy;
     [SerializeField] private string[] voicelines;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private bool allowTalkAnim;
 
     public UnityEvent<string, GameObject> AudioPlayEvent;
 
@@ -29,6 +32,15 @@ public class ClownVoicelinePlayer : MonoBehaviour
         elapsedTime = Random.Range(-50f, -10f);
 
         AudioPlayEvent?.Invoke(voicelines[Random.Range(0, voicelines.Length)], enemy);
+
+        if (allowTalkAnim) StartCoroutine(MoveMouthCO());
+    }
+
+    private IEnumerator MoveMouthCO()
+    {
+        enemy.transform.GetChild(0).GetComponent<Animator>().SetBool("DoTalk", true);
+        yield return new WaitForSeconds(audioSource.clip.length);
+        enemy.transform.GetChild(0).GetComponent<Animator>().SetBool("DoTalk", false);
     }
 
     public void ResetTimer() => elapsedTime = 0;
