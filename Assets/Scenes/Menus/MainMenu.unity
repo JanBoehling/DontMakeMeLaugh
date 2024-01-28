@@ -2847,7 +2847,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 5
   MinDistance: 0.5
-  MaxDistance: 3
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -3392,14 +3392,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b55d538dcc2574f85735f9ef6dab74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 919132149155446097, guid: 421ed4aac15651b4fa0dcf8b94de3e5b,
-    type: 3}
+  cardPrefab:
+  - {fileID: 416680558647835512, guid: b702bb617ad8ae643a08acc09f6db8c3, type: 3}
+  - {fileID: 416680558647835512, guid: c3680a40dfdc1b949870e2951136f0b4, type: 3}
+  - {fileID: 416680558647835512, guid: ee658197bccfd89488d2950e8e0c4caa, type: 3}
   cardFrontMaterial: {fileID: 2100000, guid: abdf0cf6067af9c4ca830056aa977a6e, type: 2}
   enemy: {fileID: 914714968}
   possibleCards:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: e7b025596d2eb294eb430385e851bbbc, type: 2}
+  - {fileID: 11400000, guid: f33f635e4e66d604496f5d813f6ac1d2, type: 2}
+  - {fileID: 11400000, guid: 4e2d931fb657365489e40ecedde395c9, type: 2}
   GameFinished: 0
   PlayAudioEvent:
     m_PersistentCalls:

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,15 +24,16 @@ public class GameController : MonoBehaviour
         //    OnWin21GameStart();
         //    _gameCompletedCount++;
         //}
-        if (_playerObject.GetComponent<Win21Game>().GameEnded /*&& _gameCompletedCount == 1*/)
+        if (_playerObject.GetComponent<Win21Game>().GameEnded && _gameCompletedCount == 0)
         {
             OnTheKingsGameStart();
             _gameCompletedCount++;
         }
-        if (_playerObject.GetComponent<TheKingsGame>().GameFinished /*&& _gameCompletedCount == 2*/)
+        if (_playerObject.GetComponent<TheKingsGame>().GameFinished && _gameCompletedCount == 1)
         {
             // MORE
             _gameCompletedCount++;
+            Console.WriteLine("Game Finished!");
         }
     }
 
@@ -100,5 +102,7 @@ public class GameController : MonoBehaviour
         _enemyObject.GetComponent<TheKingsBehaviour>().enabled = true;
         foreach (var item in _theKingsGameObjects)
             item.SetActive(false);
+
+        _playerObject.GetComponent<TheKingsGame>().StartGame();
     }
 }

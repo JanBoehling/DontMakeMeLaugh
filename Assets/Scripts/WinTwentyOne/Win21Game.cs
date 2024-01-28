@@ -1,7 +1,4 @@
-using Cinemachine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.SpeedTree.Importer;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,7 +19,7 @@ public class Win21Game : MonoBehaviour
 
     public UnityEvent<string, GameObject> AudioPlayEvent;
 
-
+    private List<GameObject> garbageContainer = new List<GameObject>();
     private int minRandom = 1;
     private int maxRandom = 11;
     private int maxPoints = 21;
@@ -45,10 +42,14 @@ public class Win21Game : MonoBehaviour
 
     private void Update()
     {
-        if (GameEnded) return;
+        if (GameEnded) 
+            return;
 
         if (playerAlreadyLost || aiAlreadyLost)
+        {
             GameEnd();
+            return;
+        }
 
         if (playersTurn)
         {
@@ -127,6 +128,7 @@ public class Win21Game : MonoBehaviour
             cardShiftAI += 0.3f;
         }
 
+        garbageContainer.Add(itemObject);
     }
 
     private void GameEnd()
@@ -168,5 +170,10 @@ public class Win21Game : MonoBehaviour
         }
 
         GameEnded = true;
+        foreach (var item in garbageContainer)
+        {
+            Destroy(item.gameObject);
+        }
+        garbageContainer.Clear();
     }
 }

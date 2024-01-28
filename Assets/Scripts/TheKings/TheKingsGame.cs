@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class TheKingsGame : MonoBehaviour
 {
-    [SerializeField] private GameObject cardPrefab = null;
+    [SerializeField] private GameObject[] cardPrefab = new GameObject[3];
     [SerializeField] private Material cardFrontMaterial = null;
     [SerializeField] private TheKingsBehaviour enemy;
 
@@ -57,9 +57,14 @@ public class TheKingsGame : MonoBehaviour
             var card = possibleCards[randomCardIndex];
             cards.Add(card);
 
-            cardObjects[i] = Instantiate(cardPrefab);
-            cardFrontMaterial.SetTexture("BaseColorMap", card.CardTex);
-            cardObjects[i].GetComponent<Renderer>().material = cardFrontMaterial;
+            if (cardObjects.Count < 5)
+            {
+                cardObjects.Add(Instantiate(cardPrefab[randomCardIndex]));
+            }
+            else
+            {
+                cardObjects[i] = Instantiate(cardPrefab[randomCardIndex]);
+            }
             ButtonCard button = cardObjects[i].AddComponent<ButtonCard>();
             button.CardSO = card;
         }
