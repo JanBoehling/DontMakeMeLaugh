@@ -21,6 +21,8 @@ public class RPSCard : MonoBehaviour, IInteractable
 
     public UnityEvent OnInteracted { get; } = new UnityEvent();
 
+    UnityEvent<Transform> IInteractable.OnInteracted => throw new System.NotImplementedException();
+
     private void Update()
     {
         switch(cardType)
