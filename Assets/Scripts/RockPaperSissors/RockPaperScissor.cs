@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System;
 using UnityEngine;
 
@@ -9,8 +10,16 @@ public class RockPaperScissor : MonoBehaviour
     private GameObject Card;
     [SerializeField]
     private int pointsNeeded = 2;
+    [SerializeField]
+    private GameObject CardPos1;
+    [SerializeField]
+    private GameObject CardPos2;
+    [SerializeField]
+    private GameObject CardPos3;
+    [SerializeField]
+    private GameObject CardPosOpponent;
 
-    private bool playerPlayedCard = false;
+    private bool turnInProgress = false;
 
 
     private void Start()
@@ -24,23 +33,31 @@ public class RockPaperScissor : MonoBehaviour
         {
             ResolveGame();
         }
-        else if (playerPlayedCard)
+        else if(!turnInProgress)
         {
-            
+            TurnStart();
         }
     }
 
-    private void HandHandHands()
+    private void TurnStart()
     {
-        CreateCard(RPSCardTypes.Rock);
-        CreateCard(RPSCardTypes.Paper);
-        CreateCard(RPSCardTypes.Scissors);
+        turnInProgress = true;
+        GameObject opponentsCard = CreateCard((RPSCardTypes)UnityEngine.Random.Range(0, 2), CardPosOpponent.transform);
+        HandHandsHand();
     }
 
-    private void CreateCard(RPSCardTypes type)
+    private void HandHandsHand()
     {
-        Card = Instantiate(Card);
-        Card.GetComponent<RPSCard>().cardType = type;
+        CreateCard(RPSCardTypes.Rock, CardPos1.transform);
+        CreateCard(RPSCardTypes.Paper, CardPos2.transform);
+        CreateCard(RPSCardTypes.Scissors, CardPos3.transform);
+    }
+
+    private GameObject CreateCard(RPSCardTypes type, Transform position)
+    {
+        GameObject card = Instantiate(Card, position);
+        card.GetComponent<RPSCard>().cardType = type;
+        return card;
     }
 
     private void ResolveGame()
