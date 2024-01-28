@@ -9,6 +9,9 @@ public class ButtonCard : MonoBehaviour, IInteractable
     public int Index;
 
     public UnityEvent OnInteracted => onInteracted;
+
+    UnityEvent<Transform> IInteractable.OnInteracted => throw new System.NotImplementedException();
+
     private UnityEvent onInteracted;
 
     private void Start()

@@ -6,6 +6,9 @@ public class RadioButton : MonoBehaviour, IInteractable
     public UnityEvent OnButtonPressed;
 
     public UnityEvent OnInteracted => onInteracted;
+
+    UnityEvent<Transform> IInteractable.OnInteracted => throw new System.NotImplementedException();
+
     private UnityEvent onInteracted;
 
     private void Start()

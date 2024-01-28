@@ -3,7 +3,17 @@ guid: 6223c29996af5ab47a3a30dddc00de76
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: severedarm
+    second: {fileID: 2100000, guid: 06851b73b9e9dbd4e884d9b641790992, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: severedhand
+    second: {fileID: 2100000, guid: eefda8577f8a97d48a296a954ac2f3fb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

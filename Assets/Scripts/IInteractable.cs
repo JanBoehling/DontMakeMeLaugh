@@ -1,4 +1,4 @@
 public interface IInteractable
 {
-    UnityEngine.Events.UnityEvent OnInteracted { get; }
+    UnityEngine.Events.UnityEvent<UnityEngine.Transform> OnInteracted { get; }
 }
