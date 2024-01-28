@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,6 +14,7 @@ public class Card : MonoBehaviour, IInteractable
     private void Awake()
     {
         OnInteracted.AddListener((finger) => StartCoroutine(DrawCardCO(finger)));
+        OnInteracted.AddListener((_) => ClownVoicelinePlayer.Instance.ResetTimer());
     }
 
     private void Update()

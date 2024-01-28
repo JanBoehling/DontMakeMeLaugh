@@ -104,6 +104,7 @@ public class TheKingsGame : MonoBehaviour
             Destroy(playerCardObjects[index]);
             playerCardObjects[index] = null;
             TheKingsController.PlayCard(playedCard, TheKingsParticipant.Player);
+            if (playedCard.Rank == 0) PlayAudioEvent?.Invoke("NoBetterThanPeasent", enemy.gameObject);
             playerPlayed = true;
         }
         else if (!enemyPlayed)
@@ -153,6 +154,12 @@ public class TheKingsGame : MonoBehaviour
 
         Console.WriteLine("Game Finished! Do Killanimation!");
         Console.WriteLine("You are Dead!!!");
+
+        // Voiceline lost all games
+        if (UnityEngine.Random.Range(0, 2) == 0)
+            PlayAudioEvent?.Invoke("BetterLuckNextTime", enemy.gameObject);
+        else
+            PlayAudioEvent?.Invoke("BiggerPlansForFingers", enemy.gameObject);
     }
 
     public List<CardSO> GetPlayerCards() => playerCards;

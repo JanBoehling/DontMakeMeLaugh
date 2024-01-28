@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private GameObject _player;
     [SerializeField]
+    private GameObject _clownVoicelinePlayer;
+    [SerializeField]
     private List<AudioClip> _clips;
     [SerializeField]
     private List<string> _audioNames;
@@ -26,8 +28,10 @@ public class AudioManager : MonoBehaviour
         }
 
         // Sub to events
-        _player.GetComponent<Win21Game>().AudioPlayEvent.AddListener(OnPlayAudioSource);
-        _player.GetComponent<TheKingsGame>().PlayAudioEvent.AddListener(OnPlayAudioSource);
+        if (_player) _player.GetComponent<Win21Game>().AudioPlayEvent.AddListener(OnPlayAudioSource);
+        if (_player) _player.GetComponent<TheKingsGame>().PlayAudioEvent.AddListener(OnPlayAudioSource);
+
+        if (_clownVoicelinePlayer) _clownVoicelinePlayer.GetComponent<ClownVoicelinePlayer>().AudioPlayEvent.AddListener(OnPlayAudioSource);
     }
 
     private void OnPlayAudioSource(string sourceName, GameObject source)
