@@ -1,7 +1,8 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class RPSCard : MonoBehaviour
+public class RPSCard : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private Texture2D rockPrint;
@@ -17,6 +18,8 @@ public class RPSCard : MonoBehaviour
 
     [SerializeField]
     private GameObject printQuad;
+
+    public UnityEvent OnInteracted { get; } = new UnityEvent();
 
     private void Update()
     {

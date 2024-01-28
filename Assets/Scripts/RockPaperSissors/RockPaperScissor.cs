@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RockPaperScissor : MonoBehaviour
@@ -19,23 +20,28 @@ public class RockPaperScissor : MonoBehaviour
     [SerializeField]
     private GameObject CardPosOpponent;
 
+    public GameObject PlayersCardChoice;
+
+    private bool GameHasStarted = true;
     private bool turnInProgress = false;
 
+    public static RockPaperScissor instance;
 
-    private void Start()
-    {
-        
-    }
+
 
     private void Update()
     {
-        if (data.playerPoints>=pointsNeeded || data.opponentPoints >= pointsNeeded)
+        if (GameHasStarted)
         {
-            ResolveGame();
-        }
-        else if(!turnInProgress)
-        {
-            TurnStart();
+            HandHandsHand();
+            if (data.playerPoints >= pointsNeeded || data.opponentPoints >= pointsNeeded)
+            {
+                ResolveGame();
+            }
+            else if (!turnInProgress)
+            {
+                TurnStart();
+            }
         }
     }
 
@@ -43,7 +49,9 @@ public class RockPaperScissor : MonoBehaviour
     {
         turnInProgress = true;
         GameObject opponentsCard = CreateCard((RPSCardTypes)UnityEngine.Random.Range(0, 2), CardPosOpponent.transform);
-        HandHandsHand();
+        PlayersCardChoice = null;
+        {
+        }while (PlayersCardChoice == null) ;
     }
 
     private void HandHandsHand()
