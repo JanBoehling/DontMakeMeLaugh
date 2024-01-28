@@ -30,6 +30,7 @@ public class Win21Game : MonoBehaviour
     private bool aiAlreadyLost;
     private bool playersTurn = true;
     public bool GameEnded;
+    public bool NextGame;
 
     private void Start()
     {
@@ -42,7 +43,17 @@ public class Win21Game : MonoBehaviour
 
     private void Update()
     {
-        if (GameEnded) 
+        if (GameEnded && Input.GetKeyDown(KeyCode.Space))
+        {
+            NextGame = true;
+            foreach (var item in garbageContainer)
+            {
+                Destroy(item.gameObject);
+            }
+            garbageContainer.Clear();
+            return;
+        }
+        else if (GameEnded)
             return;
 
         if (playerAlreadyLost || aiAlreadyLost)
@@ -170,10 +181,5 @@ public class Win21Game : MonoBehaviour
         }
 
         GameEnded = true;
-        foreach (var item in garbageContainer)
-        {
-            Destroy(item.gameObject);
-        }
-        garbageContainer.Clear();
     }
 }

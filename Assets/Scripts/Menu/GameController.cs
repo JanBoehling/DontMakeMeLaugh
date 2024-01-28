@@ -9,9 +9,15 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject _enemyObject;
     [SerializeField]
+    private GameObject _rockPapScissCanvas;
+    [SerializeField]
     private List<GameObject> _rockPaperSissorsGameObjects = new List<GameObject>();
     [SerializeField]
+    private GameObject _win21Canvas;
+    [SerializeField]
     private List<GameObject> _twentyOneWinGameObjects = new List<GameObject>();
+    [SerializeField]
+    private GameObject _theKingsCanvas;
     [SerializeField]
     private List<GameObject> _theKingsGameObjects = new List<GameObject>();
 
@@ -19,14 +25,14 @@ public class GameController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (_playerObject.GetComponent<RockPaperSissorBehaviour>().GameEnded /*&& _gameCompletedCount == 0*/)
+        //if (_playerObject.GetComponent<RockPaperScissorBehaviour>().GameEnded && _gameCompletedCount == 0)
         //{
-        //    OnWin21GameStart();
+            OnWin21GameStart(); // Game 2
         //    _gameCompletedCount++;
         //}
-        if (_playerObject.GetComponent<Win21Game>().GameEnded && _gameCompletedCount == 0)
+        if (_playerObject.GetComponent<Win21Game>().NextGame && _gameCompletedCount == 0)
         {
-            OnTheKingsGameStart();
+            OnTheKingsGameStart(); // Game 3
             _gameCompletedCount++;
         }
         if (_playerObject.GetComponent<TheKingsGame>().GameFinished && _gameCompletedCount == 1)
@@ -50,6 +56,9 @@ public class GameController : MonoBehaviour
         _playerObject.SetActive(false);
         _enemyObject.SetActive(false);
 
+        _win21Canvas.SetActive(false);
+        _theKingsCanvas.SetActive(false);
+
         foreach (var item in _rockPaperSissorsGameObjects)
             item.SetActive(false);
 
@@ -60,10 +69,12 @@ public class GameController : MonoBehaviour
             item.SetActive(false);
     }
 
-    public void OnRockPaperSissorsStart()
+    public void OnRockPaperScissorsStart()
     {
         _playerObject.SetActive(true); 
         _enemyObject.SetActive(true);
+
+        _rockPapScissCanvas.SetActive(false);
 
         //_playerObject.GetComponent<RockPaperSissorBehaviour>().enabled = true; // Enable Rock Paper Sissors Gameplay for player
         _enemyObject.GetComponent<RockPaperSissorBehaviour>().enabled = true;

@@ -8,7 +8,12 @@ public class PlayerInteractionController : MonoBehaviour
 
     private Camera mainCam = null;
 
-    private void Awake() => mainCam = Camera.main;
+    private void Awake()
+    {
+        mainCam = Camera.main;
+        if (mainCam == null)
+            mainCam = FindAnyObjectByType<Camera>();
+    }
 
     private void Update()
     {
