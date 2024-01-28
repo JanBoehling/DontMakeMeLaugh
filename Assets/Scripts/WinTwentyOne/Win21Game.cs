@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Win21Game : MonoBehaviour
 {
@@ -6,30 +8,52 @@ public class Win21Game : MonoBehaviour
     private TwentyOneData data;
     [SerializeField]
     private GameObject enemy;
+    [SerializeField]
+    private GameObject card;
+    [SerializeField]
+    private Transform cardSpawnPoint;
+    [SerializeField]
+    NumberContainerScriptx numberContainer;
+    [SerializeField]
+    private Material cardMaterial = null;
 
+    public UnityEvent<string, GameObject> AudioPlayEvent;
+
+    private List<GameObject> garbageContainer = new List<GameObject>();
     private int minRandom = 1;
     private int maxRandom = 11;
     private int maxPoints = 21;
+    private float cardShiftPlayer;
+    private float cardShiftAI;
     public int NumberOnCard;
     private bool playerAlreadyLost;
     private bool aiAlreadyLost;
     private bool playersTurn = true;
-    private bool gameEnded;
+    public bool GameEnded;
 
     private void Start()
     {
+        data.AICardCount = 0;
+        data.AILastCardValue = 0;
+        data.AITotalCardValue = 0;
+        data.PlayerTotalCardValue = 0;
         data.Game = this;   
     }
 
     private void Update()
     {
-        if (gameEnded) return;
+        if (GameEnded) 
+            return;
 
         if (playerAlreadyLost || aiAlreadyLost)
+        {
             GameEnd();
+            return;
+        }
 
         if (playersTurn)
         {
+            Debug.Log("Drawing a Card");
             GameStillPlayable();
         }
         else // AI turn
@@ -59,6 +83,8 @@ public class Win21Game : MonoBehaviour
     {
         int random = Random.Range(minRandom, maxRandom);
         NumberOnCard = random;
+        Debug.Log(NumberOnCard);
+        ProduceCard();
         return random;
     }
 
@@ -75,11 +101,34 @@ public class Win21Game : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             data.PlayerTotalCardValue += DrawCard();
-            Debug.Log(data.PlayerTotalCardValue);
         }
         else if (Input.GetKeyDown(KeyCode.Q))
+        {
             playersTurn = false;
-            return;
+        }
+    }
+
+    private void ProduceCard()
+    {
+        numberContainer.GettingTheCorrectTexture(NumberOnCard);
+        GameObject itemObject = Instantiate(numberContainer.correctGameObject, cardSpawnPoint);
+
+        if (playersTurn == true)
+        {
+            itemObject.transform.localPosition = new Vector3(cardShiftPlayer, 0, 0);
+            itemObject.transform.eulerAngles = new Vector3(0, 180, 0);
+            itemObject.transform.localScale = new Vector3(0.11f, 0.11f, 0.11f);
+            cardShiftPlayer += 0.3f;
+        }
+        else
+        {
+            itemObject.transform.localPosition = new Vector3(cardShiftAI, 0, 0.5f);
+            itemObject.transform.eulerAngles = Vector3.zero;
+            itemObject.transform.localScale = new Vector3(0.11f, 0.11f, 0.11f);
+            cardShiftAI += 0.3f;
+        }
+
+        garbageContainer.Add(itemObject);
     }
 
     private void GameEnd()
@@ -87,32 +136,44 @@ public class Win21Game : MonoBehaviour
         if (data.PlayerTotalCardValue <= maxPoints && data.PlayerTotalCardValue > data.AITotalCardValue && data.AITotalCardValue <= maxPoints)
         {
             //Player Win, because he is closer to 21 than the AI.
+            AudioPlayEvent?.Invoke("FINGIES", enemy);
         }
         else if(data.AITotalCardValue <= maxPoints && data.AITotalCardValue > data.PlayerTotalCardValue && data.PlayerTotalCardValue <= maxPoints)
         {
             //Player Lose, because ai is closer to 21.
+            AudioPlayEvent?.Invoke("BrightSmileHug", enemy);
         }
         if (data.PlayerTotalCardValue > maxPoints && data.AITotalCardValue <= maxPoints)
         {
             //player lose, because player is over 21 while AI is under it.
+            AudioPlayEvent?.Invoke("EasierThanEgg", enemy);
         }
         else if (data.AITotalCardValue > maxPoints && data.PlayerTotalCardValue <= maxPoints)
         {
             //Player win, because ai is over 21 while player is not.
+            AudioPlayEvent?.Invoke("21Thoughts", enemy);
         }
         if (data.PlayerTotalCardValue > maxPoints && data.AITotalCardValue > maxPoints && data.PlayerTotalCardValue > data.AITotalCardValue)
         {
             //player lose, because both people are over the Limit but Player has a higher number
+            AudioPlayEvent?.Invoke("ExcitmentThroughMyBody", enemy);
         }
         else if(data.AITotalCardValue > maxPoints && data.PlayerTotalCardValue > maxPoints && data.AITotalCardValue > data.PlayerTotalCardValue)
         {
             //Player Win, because both are over 21 but he has the lower number
+            AudioPlayEvent?.Invoke("DropKickAChild", enemy);
         }
         if (data.PlayerTotalCardValue == data.AITotalCardValue)
         {
             //Noone Wins
+            AudioPlayEvent?.Invoke("ComingForFingers", enemy);
         }
 
-        gameEnded = true;
+        GameEnded = true;
+        foreach (var item in garbageContainer)
+        {
+            Destroy(item.gameObject);
+        }
+        garbageContainer.Clear();
     }
 }

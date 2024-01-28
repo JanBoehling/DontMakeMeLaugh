@@ -5,6 +5,7 @@ public class PlayerCameraController : MonoBehaviour
     [SerializeField] private float sensitivity = 1f;
     [SerializeField, Range(0f, 1f)] private float springBackSpeed = .6f;
 
+    [SerializeField] private Vector2 dampAngle = new(40f, 20f);
     [SerializeField] private Vector2 maxAngle = new(60f, 60f);
 
     private float xRot = default;
@@ -37,8 +38,8 @@ public class PlayerCameraController : MonoBehaviour
         yRot += mouseX * sensitivity;
         xRot -= mouseY * sensitivity;
 
-        xRot = Mathf.SmoothDamp(xRot, 0f, ref smoothDampVelocityX, 1 - springBackSpeed);
-        yRot = Mathf.SmoothDamp(yRot, 0f, ref smoothDampVelocityY, 1 - springBackSpeed);
+        if (xRot > dampAngle.x || xRot < -dampAngle.x) xRot = Mathf.SmoothDamp(xRot, Mathf.Sign(xRot) * dampAngle.x, ref smoothDampVelocityX, 1 - springBackSpeed);
+        if (yRot > dampAngle.y || yRot < -dampAngle.y) yRot = Mathf.SmoothDamp(yRot, Mathf.Sign(yRot) * dampAngle.y, ref smoothDampVelocityY, 1 - springBackSpeed);
 
         xRot = Mathf.Clamp(xRot, -maxAngle.x, maxAngle.x);
         yRot = Mathf.Clamp(yRot, -maxAngle.y, maxAngle.y);

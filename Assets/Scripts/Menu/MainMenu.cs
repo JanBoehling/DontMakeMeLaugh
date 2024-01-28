@@ -1,4 +1,7 @@
+using Cinemachine;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -8,8 +11,19 @@ public class MainMenu : MonoBehaviour
     private GameObject _settingsCanvas;
     [SerializeField]
     private GameObject _creditsCanvas;
+    [SerializeField]
+    private CinemachineDollyCart _dollyCart;
+    [SerializeField]
+    private AudioMixer _mixer;
 
+    private GameController _controller;
     private int _currentPage = 0;
+
+    private void Start()
+    {
+        _controller = GetComponent<GameController>();
+        _controller.OnStart();
+    }
 
     public void QuitGame()
     {
@@ -18,6 +32,35 @@ public class MainMenu : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void LateUpdate()
+    {
+        if(_dollyCart.m_Path.MaxPos - 1f <= _dollyCart.m_Position)
+        {
+            //_controller.OnRockPaperSissorsStart(); // Unkomment if finished | Delete other call
+            _controller.OnWin21GameStart(); // TEST DEBUG
+        }
+    }
+
+    public void OpenUrl(string url)
+    {
+        try
+        {
+            System.Diagnostics.Process.Start(url);
+        }
+        catch (System.Exception)
+        {
+            Debug.LogError("Could not open URL");
+        }
+    }
+
+    public void SetVolume(float volume) => _mixer.SetFloat("MasterVolume", volume);
+
+    public void OnStartPressed()
+    {
+        _dollyCart.m_Speed = 0.1f;
+        DisableAllPages();
     }
 
     public void ChangePage(int index)

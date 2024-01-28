@@ -11,7 +11,7 @@ public class TaskOverTwentyOne : Node
 
     public override NodeState Evaluate()
     {
-        if (_data.Game.CheckStillPlayable(_data.AITotalCardValue))
+        if (!_data.Game.CheckStillPlayable(_data.AITotalCardValue))
         {
             _data.Game.OnAIOverFitted();
             return NodeState.Success;
