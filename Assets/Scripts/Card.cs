@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Card : MonoBehaviour, IInteractable
 {
     public UnityEvent OnInteracted { get; } = new();
+    public bool InAnimation { get; set; } = false;
 
     [SerializeField] private Transform arm;
 
@@ -15,6 +16,16 @@ public class Card : MonoBehaviour, IInteractable
     private void Awake()
     {
         OnInteracted.AddListener(() => StartCoroutine(RotateHandToTarget(arm, target)));
+    }
+
+    private void Update()
+    {
+        if (!InAnimation) return;
+        
+        var pos = transform.position;
+        pos.y = 0.825f;
+
+        transform.SetPositionAndRotation(pos, Quaternion.identity);
     }
 
     private IEnumerator RotateHandToTarget(Transform arm, Vector3 target)
