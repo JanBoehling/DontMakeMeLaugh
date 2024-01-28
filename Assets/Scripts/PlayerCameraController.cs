@@ -8,20 +8,18 @@ public class PlayerCameraController : MonoBehaviour
     [SerializeField] private Vector2 dampAngle = new(40f, 20f);
     [SerializeField] private Vector2 maxAngle = new(60f, 60f);
 
+    [SerializeField] private Transform mainCam;
+
     private float xRot = default;
     private float yRot = default;
-
-    private Transform mainCam = null;
 
     private float smoothDampVelocityX = default;
     private float smoothDampVelocityY = default;
 
     private void Awake()
     {
-        mainCam = Camera.main.transform;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     private void Update()

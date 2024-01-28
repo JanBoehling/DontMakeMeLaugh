@@ -8,11 +8,12 @@ public class TheKingsGame : MonoBehaviour
     [SerializeField] private GameObject[] cardPrefab = new GameObject[3];
     [SerializeField] private Material cardFrontMaterial = null;
     [SerializeField] private TheKingsBehaviour enemy;
+    [SerializeField] private Transform cardSpawnPoint;
 
     [SerializeField] private CardSO[] possibleCards = new CardSO[3];
 
     private List<CardSO> playerCards = new(5);
-    private List<CardSO> AICards = new(5);
+    private List<CardSO> aICards = new(5);
 
     private List<GameObject> playerCardObjects = new(5);
     private List<GameObject> AICardObjects = new(5);
@@ -36,34 +37,48 @@ public class TheKingsGame : MonoBehaviour
             if (TheKingsController.EnemyAgent == null)
                 TheKingsController.EnemyAgent = enemy;
             DealCards(playerCards, playerCardObjects);
-            DealCards(AICards, AICardObjects);
+            DealCards(aICards, AICardObjects, true);
 
-            enemy.GetGameData().AICards = AICards;
+            enemy.GetGameData().AICards = aICards;
             gameStarted = true;
         }
     }
 
     // Phase 1: every participant gets five cards
-    public void DealCards(List<CardSO> cards, List<GameObject> cardObjects)
+    public void DealCards(List<CardSO> cards, List<GameObject> cardObjects, bool isEnemy = false)
     {
         cards.Clear();
 
         PlayAudioEvent?.Invoke("ChildLabour", enemy.gameObject);
 
         const int cardAmount = 5;
+        float offset = 0;
         for (int i = 0; i < cardAmount; i++)
         {
             var randomCardIndex = Random.Range(0, possibleCards.Length);
             var card = possibleCards[randomCardIndex];
             cards.Add(card);
 
-            if (cardObjects.Count < 5)
+            GameObject obj = Instantiate(cardPrefab[randomCardIndex]);
+            if (isEnemy)
             {
-                cardObjects.Add(Instantiate(cardPrefab[randomCardIndex]));
+                obj.transform.localPosition = new Vector3(cardSpawnPoint.position.x + offset, cardSpawnPoint.position.y + 0.2f, cardSpawnPoint.position.z + 0.5f);
+                obj.transform.eulerAngles = new Vector3(90, 0, 0);
             }
             else
             {
-                cardObjects[i] = Instantiate(cardPrefab[randomCardIndex]);
+                obj.transform.localPosition = new Vector3(cardSpawnPoint.position.x + offset, cardSpawnPoint.position.y + 0.2f, cardSpawnPoint.position.z);
+                obj.transform.eulerAngles = new Vector3(90, 180, 30);
+            }
+            obj.transform.localScale = new Vector3(0.11f, 0.11f, 0.11f);
+            offset += 0.2f;
+            if (cardObjects.Count < 5)
+            {
+                cardObjects.Add(obj);
+            }
+            else
+            {
+                cardObjects[i] = obj;
             }
             ButtonCard button = cardObjects[i].AddComponent<ButtonCard>();
             button.CardSO = card;
@@ -83,8 +98,8 @@ public class TheKingsGame : MonoBehaviour
         }
         else
         {
-            playedCard = AICards[index];
-            AICards.RemoveAt(index);
+            playedCard = aICards[index];
+            aICards.RemoveAt(index);
             TheKingsController.PlayCard(playedCard, TheKingsParticipant.Enemy);
             enemyPlayed = true;
         }
@@ -112,7 +127,7 @@ public class TheKingsGame : MonoBehaviour
 
         playerCards.Clear();
         playerCardObjects.Clear();
-        AICards.Clear();
+        aICards.Clear();
         AICardObjects.Clear();
     }
 

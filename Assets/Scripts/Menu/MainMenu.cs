@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private CinemachineDollyCart _dollyCart;
     [SerializeField]
+    private GameObject _camera;
+    [SerializeField]
     private AudioMixer _mixer;
 
     private GameController _controller;
@@ -23,6 +25,9 @@ public class MainMenu : MonoBehaviour
     {
         _controller = GetComponent<GameController>();
         _controller.OnStart();
+
+        _camera.GetComponent<PlayerCameraController>().enabled = false;
+        _camera.GetComponent<PlayerInteractionController>().enabled = false;
     }
 
     public void QuitGame()
@@ -38,6 +43,8 @@ public class MainMenu : MonoBehaviour
     {
         if(_dollyCart.m_Path.MaxPos - 1f <= _dollyCart.m_Position)
         {
+            _camera.GetComponent<PlayerCameraController>().enabled = true;
+            _camera.GetComponent<PlayerInteractionController>().enabled = true;
             //_controller.OnRockPaperSissorsStart(); // Unkomment if finished | Delete other call
             _controller.OnWin21GameStart(); // TEST DEBUG
         }
