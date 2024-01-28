@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.VersionControl.Asset;
 
 namespace GOAP
 {
@@ -33,9 +34,10 @@ namespace GOAP
                     {
                         Invoke(nameof(CompleteAction), _currentAction.Duration);
                         _actionInvoked = true;
+                        return;
                     }
 
-                    return;
+                    continue;
                 }
 
                 if (_planner == null || _actionQueue == null)
@@ -62,6 +64,12 @@ namespace GOAP
                             break;
                         }
                     }
+
+                    if (_actionQueue == null)
+                    {
+                        _actionQueue = new Queue<Action>();
+                        _actionQueue.Enqueue(PlayNextPosibleCard(states));
+                    }
                 }
 
                 if (_actionQueue != null && _actionQueue.Count == 0)
@@ -77,7 +85,11 @@ namespace GOAP
                     _currentAction = _actionQueue.Dequeue();
                     if (!_currentAction.PrePerform())
                         _actionQueue = null;
+
+                    _currentAction.Running = true;
                 }
+                _actionQueue = null;
+                _planner = null;
             }
         }
 
@@ -86,6 +98,27 @@ namespace GOAP
             _currentAction.Running = false;
             _currentAction.PostPerform();
             _actionInvoked = false;
+        }
+
+        private Action PlayNextPosibleCard(WorldStates states)
+        {
+            Action firstPosibleAction = null;
+            foreach (var item in Actions)
+            {
+                foreach (var state in states.GetStates())
+                {
+                    if (!item.PreConditions.ContainsKey(state.Key))
+                        continue;
+
+                    firstPosibleAction = item;
+                    break;
+                }
+
+                if (firstPosibleAction != null)
+                    break;
+            }
+
+            return firstPosibleAction;
         }
     }
 }

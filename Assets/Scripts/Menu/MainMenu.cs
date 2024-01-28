@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
 
     private GameController _controller;
     private int _currentPage = 0;
+    private bool _gamesStarted;
 
     private void Start()
     {
@@ -45,8 +46,11 @@ public class MainMenu : MonoBehaviour
         {
             _camera.GetComponent<PlayerCameraController>().enabled = true;
             _camera.GetComponent<PlayerInteractionController>().enabled = true;
-            //_controller.OnRockPaperSissorsStart(); // Unkomment if finished | Delete other call
-            _controller.OnWin21GameStart(); // TEST DEBUG
+            if (!_gamesStarted && Input.GetKeyUp(KeyCode.Space))
+            {
+                _controller.OnRockPaperScissorsStart();
+                _gamesStarted = true;
+            }
         }
     }
 
@@ -66,7 +70,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnStartPressed()
     {
-        _dollyCart.m_Speed = 0.1f;
+        _dollyCart.m_Speed = 0.2f;
         DisableAllPages();
     }
 

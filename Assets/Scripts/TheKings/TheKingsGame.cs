@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class TheKingsGame : MonoBehaviour
     [SerializeField] private Material cardFrontMaterial = null;
     [SerializeField] private TheKingsBehaviour enemy;
     [SerializeField] private Transform cardSpawnPoint;
+    [SerializeField] private LayerMask playerCardLayer;
 
     [SerializeField] private CardSO[] possibleCards = new CardSO[3];
 
@@ -55,7 +57,7 @@ public class TheKingsGame : MonoBehaviour
         float offset = 0;
         for (int i = 0; i < cardAmount; i++)
         {
-            var randomCardIndex = Random.Range(0, possibleCards.Length);
+            var randomCardIndex = UnityEngine.Random.Range(0, possibleCards.Length);
             var card = possibleCards[randomCardIndex];
             cards.Add(card);
 
@@ -69,6 +71,7 @@ public class TheKingsGame : MonoBehaviour
             {
                 obj.transform.localPosition = new Vector3(cardSpawnPoint.position.x + offset, cardSpawnPoint.position.y + 0.2f, cardSpawnPoint.position.z);
                 obj.transform.eulerAngles = new Vector3(90, 180, 30);
+                obj.layer = 18;
             }
             obj.transform.localScale = new Vector3(0.11f, 0.11f, 0.11f);
             offset += 0.2f;
@@ -82,7 +85,12 @@ public class TheKingsGame : MonoBehaviour
             }
             ButtonCard button = cardObjects[i].AddComponent<ButtonCard>();
             button.CardSO = card;
+            button.Game = this;
+            button.Index = i;
         }
+
+        if (isEnemy)
+            enemy.SetAgentData(cards);
     }
 
     // Phase 2: every participant plays one card covered
@@ -92,14 +100,18 @@ public class TheKingsGame : MonoBehaviour
         if (isPlayer)
         {
             playedCard = playerCards[index];
-            playerCards.RemoveAt(index);
+            playerCards[index] = null;
+            Destroy(playerCardObjects[index]);
+            playerCardObjects[index] = null;
             TheKingsController.PlayCard(playedCard, TheKingsParticipant.Player);
             playerPlayed = true;
         }
-        else
+        else if (!enemyPlayed)
         {
             playedCard = aICards[index];
-            aICards.RemoveAt(index);
+            aICards[index] = null;
+            Destroy(AICardObjects[index]);
+            AICardObjects[index] = null;
             TheKingsController.PlayCard(playedCard, TheKingsParticipant.Enemy);
             enemyPlayed = true;
         }
@@ -121,14 +133,26 @@ public class TheKingsGame : MonoBehaviour
         enemyPlayed = false;
 
         if (!hasWinner)
-            StartGame();
+            return;
         else
             GameFinished = true;
+
+        foreach (var item in playerCardObjects)
+        {
+            Destroy(item);
+        }
+        foreach (var item in AICardObjects)
+        {
+            Destroy(item);
+        }
 
         playerCards.Clear();
         playerCardObjects.Clear();
         aICards.Clear();
         AICardObjects.Clear();
+
+        Console.WriteLine("Game Finished! Do Killanimation!");
+        Console.WriteLine("You are Dead!!!");
     }
 
     public List<CardSO> GetPlayerCards() => playerCards;

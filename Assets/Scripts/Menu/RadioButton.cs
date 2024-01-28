@@ -1,13 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RadioButton : MonoBehaviour
+public class RadioButton : MonoBehaviour, IInteractable
 {
     public UnityEvent OnButtonPressed;
 
-    private void OnCollisionEnter(Collision collision)
+    public UnityEvent OnInteracted => onInteracted;
+    private UnityEvent onInteracted;
+
+    private void Start()
+    {
+        onInteracted = new UnityEvent();
+        onInteracted.AddListener(Interaction);    
+    }
+
+    private void Interaction()
     {
         OnButtonPressed?.Invoke();
     }

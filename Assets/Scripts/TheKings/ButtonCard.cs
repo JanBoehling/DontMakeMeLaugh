@@ -1,19 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class ButtonCard : MonoBehaviour
+public class ButtonCard : MonoBehaviour, IInteractable
 {
     public CardSO CardSO;
     public TheKingsGame Game;
+    public int Index;
+
+    public UnityEvent OnInteracted => onInteracted;
+    private UnityEvent onInteracted;
+
+    private void Start()
+    {
+        onInteracted = new UnityEvent();
+        onInteracted.AddListener(CardWasPressed);
+    }
 
     /// <summary>
     /// Call if Card was hit by Raycast
     /// </summary>
     public void CardWasPressed()
     {
-        List<CardSO> playerCards = Game.GetPlayerCards();
-        for (int i = 0; i < playerCards.Count; i++)
-            if (playerCards[i] == CardSO)
-                Game.PlayCard(i, true);
+        Game.PlayCard(Index, true);
     }
 }

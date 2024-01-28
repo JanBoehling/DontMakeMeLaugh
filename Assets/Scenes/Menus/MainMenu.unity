@@ -1501,10 +1501,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30b808bb6dfd7949b587e4ed6366f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionRange: 10
+  interactionRange: 1.5
   interactionMask:
     serializedVersion: 2
-    m_Bits: 23
+    m_Bits: 262144
 --- !u!1 &688416428
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,10 +2251,10 @@ MonoBehaviour:
   - Key: gainPoint
     Value: 1
   Cost: 1
-  Duration: 5
+  Duration: 0
   Running: 0
-  _game: {fileID: 0}
-  _agent: {fileID: 0}
+  _game: {fileID: 1582967499}
+  _agent: {fileID: 914714968}
 --- !u!114 &914714971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2275,7 +2275,7 @@ MonoBehaviour:
   - Key: win
     Value: 1
   Cost: 1
-  Duration: 5
+  Duration: 0
   Running: 0
 --- !u!114 &914714972
 MonoBehaviour:
@@ -2291,16 +2291,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionName: PlayPeasent
   _preCons:
-  - Key: hasPeasantCard
+  - Key: hasPeasantCards
     Value: 1
   _afterEffs:
   - Key: lostLeast
     Value: 1
   Cost: 10
-  Duration: 5
+  Duration: 0
   Running: 0
-  _game: {fileID: 0}
-  _agent: {fileID: 0}
+  _game: {fileID: 1582967499}
+  _agent: {fileID: 914714968}
 --- !u!114 &914714973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2315,7 +2315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionName: PlayPeasent
   _preCons:
-  - Key: hasPeasantCard
+  - Key: hasPeasantCards
     Value: 1
   - Key: playerPlayedKing
     Value: 1
@@ -2323,10 +2323,10 @@ MonoBehaviour:
   - Key: lostLeast
     Value: 1
   Cost: 1
-  Duration: 5
+  Duration: 0
   Running: 0
-  _game: {fileID: 0}
-  _agent: {fileID: 0}
+  _game: {fileID: 1582967499}
+  _agent: {fileID: 914714968}
 --- !u!114 &914714974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2349,10 +2349,10 @@ MonoBehaviour:
   - Key: lostLeast
     Value: 1
   Cost: 3
-  Duration: 5
+  Duration: 0
   Running: 0
-  _game: {fileID: 0}
-  _agent: {fileID: 0}
+  _game: {fileID: 1582967499}
+  _agent: {fileID: 914714968}
 --- !u!114 &914714975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2375,10 +2375,10 @@ MonoBehaviour:
   - Key: draw
     Value: 1
   Cost: 1
-  Duration: 5
+  Duration: 0
   Running: 0
-  _game: {fileID: 0}
-  _agent: {fileID: 0}
+  _game: {fileID: 1582967499}
+  _agent: {fileID: 914714968}
 --- !u!114 &914714976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2401,10 +2401,10 @@ MonoBehaviour:
   - Key: gainPoint
     Value: 1
   Cost: 1
-  Duration: 5
+  Duration: 0
   Running: 0
-  _game: {fileID: 0}
-  _agent: {fileID: 0}
+  _game: {fileID: 1582967499}
+  _agent: {fileID: 914714968}
 --- !u!114 &914714977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2427,10 +2427,10 @@ MonoBehaviour:
   - Key: draw
     Value: 1
   Cost: 5
-  Duration: 5
+  Duration: 0
   Running: 0
-  _game: {fileID: 0}
-  _agent: {fileID: 0}
+  _game: {fileID: 1582967499}
+  _agent: {fileID: 914714968}
 --- !u!114 &914714978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2453,10 +2453,10 @@ MonoBehaviour:
   - Key: gainPoint
     Value: 1
   Cost: 3
-  Duration: 5
+  Duration: 0
   Running: 0
-  _game: {fileID: 0}
-  _agent: {fileID: 0}
+  _game: {fileID: 1582967499}
+  _agent: {fileID: 914714968}
 --- !u!82 &914714979
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3659,8 +3659,8 @@ MonoBehaviour:
   musicClips:
   - {fileID: 8300000, guid: 9fb13dafdfa47d943a7eb9f30de43bbe, type: 3}
   - {fileID: 8300000, guid: 06d7f34ea0a2dc94bae0d33c6134782b, type: 3}
-  musicDown: {fileID: 0}
-  musicUp: {fileID: 0}
+  musicDown: {fileID: 2055916718}
+  musicUp: {fileID: 593810127}
 --- !u!1 &1516090697
 GameObject:
   m_ObjectHideFlags: 0
@@ -4362,6 +4362,9 @@ MonoBehaviour:
   cardFrontMaterial: {fileID: 2100000, guid: abdf0cf6067af9c4ca830056aa977a6e, type: 2}
   enemy: {fileID: 914714968}
   cardSpawnPoint: {fileID: 290239806}
+  playerCardLayer:
+    serializedVersion: 2
+    m_Bits: 0
   possibleCards:
   - {fileID: 11400000, guid: e7b025596d2eb294eb430385e851bbbc, type: 2}
   - {fileID: 11400000, guid: f33f635e4e66d604496f5d813f6ac1d2, type: 2}

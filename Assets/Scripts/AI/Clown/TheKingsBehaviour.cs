@@ -1,4 +1,5 @@
 using GOAP;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TheKingsBehaviour : Agent
@@ -6,20 +7,21 @@ public class TheKingsBehaviour : Agent
     [SerializeField]
     private TheKingsData _data;
 
-    protected override void Start()
+    public void SetAgentData(List<CardSO> cards)
     {
         ResetGameData();
+        _data.AICards = cards;
 
         AgentBeliefs = new WorldStates();
         foreach (var item in _data.AICards)
         {
-            if (item.name == "King")
+            if (item.name.Contains("King"))
                 AgentBeliefs.ModifyState("hasKingCards", 1);
 
-            if (item.name == "Queen")
+            if (item.name.Contains("Queen"))
                 AgentBeliefs.ModifyState("hasQueenCards", 1);
 
-            if (item.name == "Peasent")
+            if (item.name.Contains("Peasent"))
                 AgentBeliefs.ModifyState("hasPeasentCards", 1);
         }
 
@@ -31,7 +33,6 @@ public class TheKingsBehaviour : Agent
         Goals.Add(drawGoal, 2);
         SubGoal lostLeastGoal = new("lostLeast", 1, false);
         Goals.Add(lostLeastGoal, 1);
-        base.Start();
     }
 
     public void SetPlayerCard(CardSO card)

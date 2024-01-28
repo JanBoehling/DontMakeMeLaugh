@@ -18,7 +18,7 @@ public class ActionPlayQueen : Action
     public override bool PrePerform()
     {
         for (int i = 0; i < _agent.GetGameData().AICards.Count; i++)
-            if (_agent.GetGameData().AICards[i].Rank == 1)
+            if (_agent.GetGameData().AICards[i] != null && _agent.GetGameData().AICards[i].Rank == 1)
             {
                 _game.PlayCard(i);
                 return true;

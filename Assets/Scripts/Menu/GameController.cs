@@ -25,12 +25,9 @@ public class GameController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_gameCompletedCount == 0 && Input.GetKeyUp(KeyCode.Space))
-            OnRockPaperSissorsStart(); // Game 1
-
-        //if (_playerObject.GetComponent<RockPaperSissorBehaviour>().GameEnded /*&& _gameCompletedCount == 0*/)
+        //if (_playerObject.GetComponent<RockPaperScissorBehaviour>().GameEnded && _gameCompletedCount == 0)
         //{
-        //    OnWin21GameStart(); // Game 2
+            OnWin21GameStart(); // Game 2
         //    _gameCompletedCount++;
         //}
         if (_playerObject.GetComponent<Win21Game>().NextGame && _gameCompletedCount == 0)
@@ -72,7 +69,7 @@ public class GameController : MonoBehaviour
             item.SetActive(false);
     }
 
-    public void OnRockPaperSissorsStart()
+    public void OnRockPaperScissorsStart()
     {
         _playerObject.SetActive(true); 
         _enemyObject.SetActive(true);
