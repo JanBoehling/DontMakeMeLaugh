@@ -34,19 +34,15 @@ public class TextHoverEffect : MonoBehaviour
         }
 
         transform.localScale = targetScale;
-
-
-      
     }
-        public void OnPointerEnter()
-        {
-            StartCoroutine(ScaleIncrease(hoverScale));
-        }
 
-        public void OnPointerExit()
-        {
-            StartCoroutine(ScaleIncrease(originalScale));
-        }
+    public void OnPointerEnter()
+    {
+        StartCoroutine(ScaleIncrease(hoverScale));
+    }
 
-
+    public void OnPointerExit()
+    {
+        StartCoroutine(ScaleIncrease(originalScale));
+    }
 } 
