@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1980156618693342282
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2110344150442637751, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2110344150442637751, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 06fef289375e5d248a724f282ca832a1, type: 2}
+    - target: {fileID: 4841041335540341862, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: m_Name
+      value: Card_RockPaperScissors
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054363167926891410, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054363167926891410, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054363167926891410, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054363167926891410, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054363167926891410, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054363167926891410, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054363167926891410, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054363167926891410, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054363167926891410, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054363167926891410, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4841041335540341862, guid: d272ae13c483330409b960ca65e2a477,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6423611475000507428}
+  m_SourcePrefab: {fileID: 100100000, guid: d272ae13c483330409b960ca65e2a477, type: 3}
+--- !u!1 &6364774321743177772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4841041335540341862, guid: d272ae13c483330409b960ca65e2a477,
+    type: 3}
+  m_PrefabInstance: {fileID: 1980156618693342282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6423611475000507428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364774321743177772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2629aad436d3c54b83890372dda8f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockPrint: {fileID: 2800000, guid: 552b47b594b384d4f898f1703447972e, type: 3}
+  paperPrint: {fileID: 2800000, guid: 481fe6baf8cef7c4aaf0e0c471b946a9, type: 3}
+  scissorPrint: {fileID: 2800000, guid: 32075fc8dc7b1a349a9d090ece0712c6, type: 3}
+  cardType: 0
+  printQuad: {fileID: 6496181035204082662}
+--- !u!1 &6496181035204082662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4710202052627468204, guid: d272ae13c483330409b960ca65e2a477,
+    type: 3}
+  m_PrefabInstance: {fileID: 1980156618693342282}
+  m_PrefabAsset: {fileID: 0}

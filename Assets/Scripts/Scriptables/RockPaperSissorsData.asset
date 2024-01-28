@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e7b0a1d5d473b344a08aaf6a3985131, type: 3}
-  m_Name: AkWwiseProjectData
+  m_Script: {fileID: 11500000, guid: cbbe01be823883b4ea3f848f3d35f481, type: 3}
+  m_Name: RockPaperSissorsData
   m_EditorClassIdentifier: 
-  ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
-  AutoSyncSelection: 0
-  autoPopulateEnabled: 1
-  currentDataSource: 0
-  CurrentPluginConfig: 
+  playerPoints: 0
+  opponentPoints: 0
