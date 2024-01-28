@@ -832,6 +832,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &410378003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3142677101652682288, guid: 5eca96f47a8e5e44c913fca86817133d,
+    type: 3}
+  m_PrefabInstance: {fileID: 564180926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &410378006 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 2093905487299566789, guid: 5eca96f47a8e5e44c913fca86817133d,
+    type: 3}
+  m_PrefabInstance: {fileID: 564180926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &410378007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410378003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7af992d4be50974d8dc0ea542ba1ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickeringLight: {fileID: 410378006}
+  minIntensity: 40000
+  maxIntensity: 20000
+  flickerInterval: 5
+  maxFlickerIntervall: 3
+  doupleTheIntervall: 6
 --- !u!1 &422863629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,7 +1121,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3142677101652682288, guid: 5eca96f47a8e5e44c913fca86817133d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 410378007}
   m_SourcePrefab: {fileID: 100100000, guid: 5eca96f47a8e5e44c913fca86817133d, type: 3}
 --- !u!1 &684134395
 GameObject:
@@ -2411,6 +2445,7 @@ MonoBehaviour:
   _settingsCanvas: {fileID: 1382264723}
   _creditsCanvas: {fileID: 754537466}
   _dollyCart: {fileID: 2139700022}
+  _camera: {fileID: 0}
   _mixer: {fileID: 24100000, guid: 18bd0d66cc24e4149ba1243ca8856a20, type: 2}
 --- !u!114 &933294650
 MonoBehaviour:
@@ -2426,9 +2461,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerObject: {fileID: 1582967496}
   _enemyObject: {fileID: 914714962}
+  _rockPapScissCanvas: {fileID: 0}
   _rockPaperSissorsGameObjects: []
+  _win21Canvas: {fileID: 0}
   _twentyOneWinGameObjects:
   - {fileID: 290239805}
+  _theKingsCanvas: {fileID: 0}
   _theKingsGameObjects: []
 --- !u!1 &1052936022
 GameObject:
@@ -3114,6 +3152,8 @@ MonoBehaviour:
   musicClips:
   - {fileID: 8300000, guid: 9fb13dafdfa47d943a7eb9f30de43bbe, type: 3}
   - {fileID: 8300000, guid: 06d7f34ea0a2dc94bae0d33c6134782b, type: 3}
+  musicDown: {fileID: 0}
+  musicUp: {fileID: 0}
 --- !u!1 &1516090697
 GameObject:
   m_ObjectHideFlags: 0
@@ -3542,6 +3582,7 @@ MonoBehaviour:
       m_Calls: []
   NumberOnCard: 0
   GameEnded: 0
+  NextGame: 0
 --- !u!4 &1582967498
 Transform:
   m_ObjectHideFlags: 0
@@ -3575,6 +3616,10 @@ MonoBehaviour:
   - {fileID: 416680558647835512, guid: ee658197bccfd89488d2950e8e0c4caa, type: 3}
   cardFrontMaterial: {fileID: 2100000, guid: abdf0cf6067af9c4ca830056aa977a6e, type: 2}
   enemy: {fileID: 914714968}
+  cardSpawnPoint: {fileID: 0}
+  playerCardLayer:
+    serializedVersion: 2
+    m_Bits: 0
   possibleCards:
   - {fileID: 11400000, guid: e7b025596d2eb294eb430385e851bbbc, type: 2}
   - {fileID: 11400000, guid: f33f635e4e66d604496f5d813f6ac1d2, type: 2}
