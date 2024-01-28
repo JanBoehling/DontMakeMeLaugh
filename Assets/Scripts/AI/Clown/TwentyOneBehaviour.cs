@@ -33,10 +33,6 @@ public class TwentyOneBehaviour : BehaviorTreeBase
                         new CheckCardValueCount(_gameData, 15, 3, true), // CardValue > 15 || CardCount > 3
                         new TaskDeclineNewCard(_gameData)
                     }),
-                    new Sequenzer(new List<Node>()
-                    {
-                        new TaskDeclineNewCard(_gameData)
-                    }),
                 }),
             }
         );

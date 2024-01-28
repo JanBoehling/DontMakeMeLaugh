@@ -1,11 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class TheKingsGame : MonoBehaviour
 {
-    [SerializeField] private GameObject[] cardPrefab = new GameObject[3];
+    [SerializeField] private GameObject cardPrefab = null;
     [SerializeField] private Material cardFrontMaterial = null;
     [SerializeField] private TheKingsBehaviour enemy;
 
@@ -21,7 +19,6 @@ public class TheKingsGame : MonoBehaviour
     private bool gameStarted = false;
 
     public bool GameFinished;
-    public UnityEvent<string, GameObject> PlayAudioEvent;
 
     private void Start()
     {
@@ -48,8 +45,6 @@ public class TheKingsGame : MonoBehaviour
     {
         cards.Clear();
 
-        PlayAudioEvent?.Invoke("ChildLabour", enemy.gameObject);
-
         const int cardAmount = 5;
         for (int i = 0; i < cardAmount; i++)
         {
@@ -57,14 +52,9 @@ public class TheKingsGame : MonoBehaviour
             var card = possibleCards[randomCardIndex];
             cards.Add(card);
 
-            if (cardObjects.Count < 5)
-            {
-                cardObjects.Add(Instantiate(cardPrefab[randomCardIndex]));
-            }
-            else
-            {
-                cardObjects[i] = Instantiate(cardPrefab[randomCardIndex]);
-            }
+            cardObjects[i] = Instantiate(cardPrefab);
+            cardFrontMaterial.SetTexture("BaseColorMap", card.CardTex);
+            cardObjects[i].GetComponent<Renderer>().material = cardFrontMaterial;
             ButtonCard button = cardObjects[i].AddComponent<ButtonCard>();
             button.CardSO = card;
         }
@@ -117,17 +107,4 @@ public class TheKingsGame : MonoBehaviour
     }
 
     public List<CardSO> GetPlayerCards() => playerCards;
-
-    private IEnumerator AsyncWaitingForPlayer(int seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        if (seconds <= 10)
-            PlayAudioEvent?.Invoke("FinallyPlayCards", enemy.gameObject);
-        else if (seconds <= 20)
-            PlayAudioEvent?.Invoke("InfiniteTimePerformance", enemy.gameObject);
-        else if (seconds <= 30)
-            PlayAudioEvent?.Invoke("COMEON", enemy.gameObject);
-        else if (seconds <= 40)
-            PlayAudioEvent?.Invoke("PLAYYOURFUCKMOVE", enemy.gameObject);
-    }
 }
