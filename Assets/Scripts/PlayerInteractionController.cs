@@ -4,6 +4,7 @@ public class PlayerInteractionController : MonoBehaviour
 {
     [SerializeField] private float interactionRange = 10f;
     [SerializeField] private LayerMask interactionMask = -1;
+    [SerializeField] private Transform fingerEnd;
 
     private Camera mainCam = null;
 
@@ -23,6 +24,6 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (!hasIntersect || !hitInfo.collider) return;
 
-        if (hitInfo.transform.TryGetComponent<IInteractable>(out var interactable)) interactable.OnInteracted.Invoke();
+        if (hitInfo.transform.TryGetComponent<IInteractable>(out var interactable)) interactable.OnInteracted.Invoke(fingerEnd);
     }
 }
