@@ -984,8 +984,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 684134398}
-  - component: {fileID: 684134400}
-  - component: {fileID: 684134399}
   - component: {fileID: 684134401}
   - component: {fileID: 684134402}
   m_Layer: 0
@@ -1011,42 +1009,6 @@ Transform:
   - {fileID: 2075638549}
   m_Father: {fileID: 2139700023}
   m_LocalEulerAnglesHint: {x: 3.53, y: -15.129, z: -0.982}
---- !u!114 &684134399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684134395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 502a21b6c7ae10645b93e5e1b0effc94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDefaultListener: 1
-  listenerId: 0
---- !u!114 &684134400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684134395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7587e5ea546c81842889f7db703c775f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_listeners:
-    initialListenerList: []
-    useDefaultListeners: 1
-  isEnvironmentAware: 0
-  isStaticObject: 0
-  m_positionOffsetData:
-    KeepMe: 0
-    positionOffset: {x: 0, y: 0, z: 0}
-  m_posOffsetData: {fileID: 0}
-  listenerMask: 1
 --- !u!114 &684134401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2065,7 +2027,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2110,7 +2072,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.585
+      value: 0.273
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2272,7 +2234,7 @@ MonoBehaviour:
   _settingsCanvas: {fileID: 1382264723}
   _creditsCanvas: {fileID: 754537466}
   _dollyCart: {fileID: 2139700022}
-  _mixer: {fileID: 0}
+  _mixer: {fileID: 24100000, guid: 18bd0d66cc24e4149ba1243ca8856a20, type: 2}
 --- !u!114 &933294650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2291,64 +2253,6 @@ MonoBehaviour:
   _twentyOneWinGameObjects:
   - {fileID: 290239805}
   _theKingsGameObjects: []
---- !u!1 &1017414343
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1017414345}
-  - component: {fileID: 1017414344}
-  m_Layer: 0
-  m_Name: WwiseGlobal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1017414344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1017414343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82fc263368f19cc43a0012fc3175808d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InitializationSettings: {fileID: 11400000, guid: c3f27be204a751841a805561b71e3726,
-    type: 2}
-  basePath: 
-  language: 
-  defaultPoolSize: 0
-  lowerPoolSize: 0
-  streamingPoolSize: 0
-  memoryCutoffThreshold: 0
-  monitorPoolSize: 0
-  monitorQueuePoolSize: 0
-  callbackManagerBufferSize: 0
-  spatialAudioPoolSize: 0
-  maxSoundPropagationDepth: 0
-  engineLogging: 0
---- !u!4 &1017414345
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1017414343}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1052936022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2533,7 +2437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _radio: {fileID: 1459939691}
   _environment: {fileID: 1818804399}
-  _clown: {fileID: 914714962}
+  _player: {fileID: 1582967496}
   _clips:
   - {fileID: 8300000, guid: 97302254f21f347449cfce2d0869e104, type: 3}
   - {fileID: 8300000, guid: c0a8ca843d78544419283ceec0f7e7ac, type: 3}
@@ -2946,9 +2850,9 @@ AudioSource:
   MaxDistance: 3
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 1
-  BypassListenerEffects: 1
-  BypassReverbZones: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -4125,7 +4029,6 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1017414345}
   - {fileID: 933294648}
   - {fileID: 357122383}
   - {fileID: 1818804400}

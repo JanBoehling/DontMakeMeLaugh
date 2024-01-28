@@ -9,24 +9,25 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private GameObject _environment;
     [SerializeField]
-    private GameObject _clown;
+    private GameObject _player;
     [SerializeField]
     private List<AudioClip> _clips;
     [SerializeField]
     private List<string> _audioNames;
 
-    private Dictionary<string, AudioClip> _audioClips;
+    private Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
 
     private void Start()
     {
         for (int i = 0; i < _clips.Count && i < _audioNames.Count; i++)
         {
-            _audioClips.Add(_audioNames[i], _clips[i]);
+            if (!_audioClips.ContainsKey(_audioNames[i]))
+                _audioClips.Add(_audioNames[i], _clips[i]);
         }
 
         // Sub to events
-        _clown.GetComponent<Win21Game>().AudioPlayEvent.AddListener(OnPlayAudioSource);
-        _clown.GetComponent<TheKingsGame>().PlayAudioEvent.AddListener(OnPlayAudioSource);
+        _player.GetComponent<Win21Game>().AudioPlayEvent.AddListener(OnPlayAudioSource);
+        _player.GetComponent<TheKingsGame>().PlayAudioEvent.AddListener(OnPlayAudioSource);
     }
 
     private void OnPlayAudioSource(string sourceName, GameObject source)
