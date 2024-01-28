@@ -48,7 +48,7 @@ public class MainMenu : MonoBehaviour
             _camera.GetComponent<PlayerInteractionController>().enabled = true;
             if (!_gamesStarted && Input.GetKeyUp(KeyCode.Space))
             {
-                _controller.OnRockPaperScissorsStart();
+                _controller.OnWin21GameStart();
                 _gamesStarted = true;
             }
         }

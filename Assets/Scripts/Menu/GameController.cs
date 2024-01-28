@@ -25,9 +25,9 @@ public class GameController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (_playerObject.GetComponent<RockPaperScissorBehaviour>().GameEnded && _gameCompletedCount == 0)
+        //if (_playerObject.GetComponent<RockPaperScissor>().NextGame && _gameCompletedCount == 0)
         //{
-            OnWin21GameStart(); // Game 2
+        //    OnWin21GameStart(); // Game 2
         //    _gameCompletedCount++;
         //}
         if (_playerObject.GetComponent<Win21Game>().NextGame && _gameCompletedCount == 0)
@@ -45,11 +45,9 @@ public class GameController : MonoBehaviour
 
     public void OnStart()
     {
-        // Set Rock... false
         _playerObject.GetComponent<Win21Game>().enabled = false;
         _playerObject.GetComponent<TheKingsGame>().enabled = false;
 
-        _enemyObject.GetComponent<RockPaperSissorBehaviour>().enabled = false;
         _enemyObject.GetComponent<TwentyOneBehaviour>().enabled = false;
         _enemyObject.GetComponent<TheKingsBehaviour>().enabled = false;
 
@@ -58,9 +56,6 @@ public class GameController : MonoBehaviour
 
         _win21Canvas.SetActive(false);
         _theKingsCanvas.SetActive(false);
-
-        foreach (var item in _rockPaperSissorsGameObjects)
-            item.SetActive(false);
 
         foreach (var item in _twentyOneWinGameObjects)
             item.SetActive(false);
@@ -71,24 +66,23 @@ public class GameController : MonoBehaviour
 
     public void OnRockPaperScissorsStart()
     {
-        _playerObject.SetActive(true); 
-        _enemyObject.SetActive(true);
+        foreach (var item in _rockPaperSissorsGameObjects)
+            item.SetActive(true);
 
         _rockPapScissCanvas.SetActive(false);
 
-        //_playerObject.GetComponent<RockPaperSissorBehaviour>().enabled = true; // Enable Rock Paper Sissors Gameplay for player
+        _playerObject.GetComponent<RockPaperScissor>().enabled = true;
         _enemyObject.GetComponent<RockPaperSissorBehaviour>().enabled = true;
 
-        foreach (var item in _rockPaperSissorsGameObjects)
-            item.SetActive(true);
+        _playerObject.SetActive(true);
+        _enemyObject.SetActive(true);
+
+        _playerObject.GetComponent<RockPaperScissor>().StartGame();
     }
 
     public void OnWin21GameStart()
     {
-        _playerObject.SetActive(true);
-        _enemyObject.SetActive(true);
-
-        //_playerObject.GetComponent<RockPaperSissorBehaviour>().enabled = false; // Enable Rock Paper Sissors Gameplay for player
+        _playerObject.GetComponent<RockPaperScissor>().enabled = false;
         _enemyObject.GetComponent<RockPaperSissorBehaviour>().enabled = false;
         foreach (var item in _rockPaperSissorsGameObjects)
             item.SetActive(false);
@@ -97,12 +91,13 @@ public class GameController : MonoBehaviour
         _enemyObject.GetComponent<TwentyOneBehaviour>().enabled = true;
         foreach (var item in _twentyOneWinGameObjects)
             item.SetActive(true);
+
+        _playerObject.SetActive(true);
+        _enemyObject.SetActive(true);
     }
 
     public void OnTheKingsGameStart()
     {
-        _playerObject.SetActive(true);
-        _enemyObject.SetActive(true);
 
         _playerObject.GetComponent<Win21Game>().enabled = false;
         _enemyObject.GetComponent<TwentyOneBehaviour>().enabled = false;
@@ -113,6 +108,9 @@ public class GameController : MonoBehaviour
         _enemyObject.GetComponent<TheKingsBehaviour>().enabled = true;
         foreach (var item in _theKingsGameObjects)
             item.SetActive(false);
+
+        _playerObject.SetActive(true);
+        _enemyObject.SetActive(true);
 
         _playerObject.GetComponent<TheKingsGame>().StartGame();
     }

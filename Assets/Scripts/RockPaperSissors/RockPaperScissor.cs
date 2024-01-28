@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RockPaperScissor : MonoBehaviour
 {
@@ -19,17 +20,22 @@ public class RockPaperScissor : MonoBehaviour
     private GameObject CardPos3;
     [SerializeField]
     private GameObject CardPosOpponent;
+    [SerializeField]
+    private RPSCard dummyCard;
 
     public GameObject PlayersCardChoice;
+    public GameObject OpponentCardChoice;
+
+    public RPSCardTypes PlayersChoice;
+    public RPSCardTypes OpponentChoice;
 
     private bool GameHasStarted = true;
     private bool turnInProgress = false;
 
     public static RockPaperScissor instance;
+    public bool NextGame;
 
-
-
-    private void Update()
+    public void StartGame()
     {
         if (GameHasStarted)
         {
@@ -48,10 +54,29 @@ public class RockPaperScissor : MonoBehaviour
     private void TurnStart()
     {
         turnInProgress = true;
-        GameObject opponentsCard = CreateCard((RPSCardTypes)UnityEngine.Random.Range(0, 2), CardPosOpponent.transform);
-        PlayersCardChoice = null;
+        OpponentCardChoice = CreateCard((RPSCardTypes)UnityEngine.Random.Range(0, 2), CardPosOpponent.transform);
+    }
+
+    private void OnInteracted(Transform transform)
+    {
+        if (transform.position == CardPos1.transform.position)
         {
-        }while (PlayersCardChoice == null) ;
+            PlayersCardChoice = CardPos1;
+            PlayersChoice = RPSCardTypes.Rock;
+        }
+        else if (transform.position == CardPos2.transform.position)
+        {
+            PlayersCardChoice = CardPos2;
+            PlayersChoice = RPSCardTypes.Paper;
+        }
+
+        else if (transform.position == CardPos3.transform.position)
+        {
+            PlayersCardChoice = CardPos3;
+            PlayersChoice = RPSCardTypes.Scissors;
+        }
+
+        TurnResolve(PlayersChoice, OpponentChoice);
     }
 
     private void HandHandsHand()
@@ -64,7 +89,17 @@ public class RockPaperScissor : MonoBehaviour
     private GameObject CreateCard(RPSCardTypes type, Transform position)
     {
         GameObject card = Instantiate(Card, position);
-        card.GetComponent<RPSCard>().cardType = type;
+        card.transform.position = position.position;
+        card.transform.localScale = new Vector3(0.11f, 0.11f, 0.11f);
+
+        RPSCard rpsCard = card.AddComponent<RPSCard>();
+        rpsCard.cardType = type;
+        rpsCard.OnInteracted.AddListener(OnInteracted);
+        rpsCard.paperPrint = dummyCard.paperPrint;
+        rpsCard.rockPrint = dummyCard.rockPrint;
+        rpsCard.scissorPrint = dummyCard.scissorPrint;
+        rpsCard.printQuad = dummyCard.transform.GetChild(0).gameObject;
+        rpsCard.ChangeCardType();
         return card;
     }
 
@@ -78,7 +113,7 @@ public class RockPaperScissor : MonoBehaviour
         {
             //OpponentWins();
         }
-        throw new NotImplementedException();
+        NextGame = true;
     }
 
     private void TurnResolve(RPSCardTypes playerCard, RPSCardTypes opponentCard)

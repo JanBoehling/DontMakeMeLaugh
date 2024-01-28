@@ -5,23 +5,23 @@ using UnityEngine.Events;
 public class RPSCard : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    private Texture2D rockPrint;
+    public Texture2D rockPrint;
 
     [SerializeField]
-    private Texture2D paperPrint;
+    public Texture2D paperPrint;
 
     [SerializeField]
-    private Texture2D scissorPrint;
+    public Texture2D scissorPrint;
 
     [SerializeField]
     public RPSCardTypes cardType;
 
-    [SerializeField]
-    private GameObject printQuad;
+    public GameObject printQuad;
 
-    public UnityEvent OnInteracted { get; } = new UnityEvent();
+    public UnityEvent<Transform> OnInteracted => onInteracted;
+    private UnityEvent<Transform> onInteracted = new UnityEvent<Transform>();
 
-    private void Update()
+    public void ChangeCardType()
     {
         switch(cardType)
         {
@@ -36,4 +36,6 @@ public class RPSCard : MonoBehaviour, IInteractable
                 break;
         }
     }
+
+
 }

@@ -8,22 +8,22 @@ public class ButtonCard : MonoBehaviour, IInteractable
     public TheKingsGame Game;
     public int Index;
 
-    public UnityEvent OnInteracted => onInteracted;
+    public UnityEvent<Transform> OnInteracted => onInteracted;
 
-    UnityEvent<Transform> IInteractable.OnInteracted => throw new System.NotImplementedException();
+    //UnityEvent IInteractable.OnInteracted => throw new System.NotImplementedException();
 
-    private UnityEvent onInteracted;
+    private UnityEvent<Transform> onInteracted;
 
     private void Start()
     {
-        onInteracted = new UnityEvent();
+        onInteracted = new UnityEvent<Transform>();
         onInteracted.AddListener(CardWasPressed);
     }
 
     /// <summary>
     /// Call if Card was hit by Raycast
     /// </summary>
-    public void CardWasPressed()
+    public void CardWasPressed(Transform transform)
     {
         Game.PlayCard(Index, true);
     }
