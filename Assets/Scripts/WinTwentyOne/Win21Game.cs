@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.SpeedTree.Importer;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Win21Game : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Win21Game : MonoBehaviour
     NumberContainerScriptx numberContainer;
     [SerializeField]
     private Material cardMaterial = null;
+
+    public UnityEvent<string, GameObject> AudioPlayEvent;
 
 
     private int minRandom = 1;
@@ -131,30 +134,37 @@ public class Win21Game : MonoBehaviour
         if (data.PlayerTotalCardValue <= maxPoints && data.PlayerTotalCardValue > data.AITotalCardValue && data.AITotalCardValue <= maxPoints)
         {
             //Player Win, because he is closer to 21 than the AI.
+            AudioPlayEvent?.Invoke("FINGIES", enemy);
         }
         else if(data.AITotalCardValue <= maxPoints && data.AITotalCardValue > data.PlayerTotalCardValue && data.PlayerTotalCardValue <= maxPoints)
         {
             //Player Lose, because ai is closer to 21.
+            AudioPlayEvent?.Invoke("BrightSmileHug", enemy);
         }
         if (data.PlayerTotalCardValue > maxPoints && data.AITotalCardValue <= maxPoints)
         {
             //player lose, because player is over 21 while AI is under it.
+            AudioPlayEvent?.Invoke("EasierThanEgg", enemy);
         }
         else if (data.AITotalCardValue > maxPoints && data.PlayerTotalCardValue <= maxPoints)
         {
             //Player win, because ai is over 21 while player is not.
+            AudioPlayEvent?.Invoke("21Thoughts", enemy);
         }
         if (data.PlayerTotalCardValue > maxPoints && data.AITotalCardValue > maxPoints && data.PlayerTotalCardValue > data.AITotalCardValue)
         {
             //player lose, because both people are over the Limit but Player has a higher number
+            AudioPlayEvent?.Invoke("ExcitmentThroughMyBody", enemy);
         }
         else if(data.AITotalCardValue > maxPoints && data.PlayerTotalCardValue > maxPoints && data.AITotalCardValue > data.PlayerTotalCardValue)
         {
             //Player Win, because both are over 21 but he has the lower number
+            AudioPlayEvent?.Invoke("DropKickAChild", enemy);
         }
         if (data.PlayerTotalCardValue == data.AITotalCardValue)
         {
             //Noone Wins
+            AudioPlayEvent?.Invoke("ComingForFingers", enemy);
         }
 
         GameEnded = true;

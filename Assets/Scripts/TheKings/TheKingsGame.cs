@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TheKingsGame : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class TheKingsGame : MonoBehaviour
     private bool gameStarted = false;
 
     public bool GameFinished;
+    public UnityEvent<string, GameObject> PlayAudioEvent;
 
     private void Start()
     {
@@ -44,6 +47,8 @@ public class TheKingsGame : MonoBehaviour
     public void DealCards(List<CardSO> cards, List<GameObject> cardObjects)
     {
         cards.Clear();
+
+        PlayAudioEvent?.Invoke("ChildLabour", enemy.gameObject);
 
         const int cardAmount = 5;
         for (int i = 0; i < cardAmount; i++)
@@ -107,4 +112,17 @@ public class TheKingsGame : MonoBehaviour
     }
 
     public List<CardSO> GetPlayerCards() => playerCards;
+
+    private IEnumerator AsyncWaitingForPlayer(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        if (seconds <= 10)
+            PlayAudioEvent?.Invoke("FinallyPlayCards", enemy.gameObject);
+        else if (seconds <= 20)
+            PlayAudioEvent?.Invoke("InfiniteTimePerformance", enemy.gameObject);
+        else if (seconds <= 30)
+            PlayAudioEvent?.Invoke("COMEON", enemy.gameObject);
+        else if (seconds <= 40)
+            PlayAudioEvent?.Invoke("PLAYYOURFUCKMOVE", enemy.gameObject);
+    }
 }
