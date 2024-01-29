@@ -7,8 +7,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private GameObject _radio;
     [SerializeField]
-    private GameObject _environment;
-    [SerializeField]
     private GameObject _player;
     [SerializeField]
     private GameObject _clownVoicelinePlayer;

@@ -13,7 +13,7 @@ public class Card : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        OnInteracted.AddListener((finger) => StartCoroutine(DrawCardCO(finger)));
+        OnInteracted.AddListener((finger) => StartCoroutine(DrawCardCO(GameObject.Find("Arm").GetComponentInChildren<Animator>(), finger, selectedCardPosition, null, 0, .5f, .25f)));
         OnInteracted.AddListener((_) => ClownVoicelinePlayer.Instance.ResetTimer());
     }
 
@@ -27,24 +27,26 @@ public class Card : MonoBehaviour, IInteractable
         transform.SetPositionAndRotation(pos, Quaternion.identity);
     }
 
-    private IEnumerator DrawCardCO(Transform finger)
+    public IEnumerator DrawCardCO(Animator anim, Transform finger, Transform cardHoldingPoint, NumberContainerScriptx numberContainer, int numberOnCard, float parentWaitDuration, float unparentWaitDuration)
     {
-        var arm = GameObject.Find("Player").transform.Find("Arm").GetChild(0);
+        anim.SetTrigger("DoCard");
 
-        //transform.position = new Vector3(finger.position.x, transform.position.y, finger.position.z);
-        //transform.SetParent(finger);
+        yield return new WaitForSeconds(parentWaitDuration);
 
-        arm.GetComponent<Animator>().SetTrigger("DoCard");
+        var cardPrefab = numberContainer.GetCardPrefab(numberOnCard);
+        var itemObject = Instantiate(cardPrefab, finger.position, Quaternion.identity, finger);
+        itemObject.transform.localScale = new(.05f, .05f, .05f);
 
-        yield return new WaitForSeconds(maxHandDistance);
+        // After x more seconds, unparent card
+        yield return new WaitForSeconds(unparentWaitDuration);
+        itemObject.transform.SetParent(null);
 
-        //transform.SetParent(null);
-
+        // Throw card to destination
         float duration = 1.5f;
         float elapsedTime = 0;
         while (elapsedTime < duration)
         {
-            transform.position = Vector3.Lerp(transform.position, selectedCardPosition.position, elapsedTime / duration);
+            transform.position = Vector3.Lerp(transform.position, cardHoldingPoint.position, elapsedTime / duration);
 
             var pos = transform.position;
             pos.y = 0.847f;

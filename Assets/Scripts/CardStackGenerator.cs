@@ -15,6 +15,8 @@ public class CardStackGenerator : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             var card = Instantiate(cardPrefab, transform.position + i * 0.001f * Vector3.up, Quaternion.identity, transform);
+            Destroy(card.GetComponent<Card>());
+            Destroy(card.GetComponent<Collider>());
             StackedCards.Add(card);
         }
     }

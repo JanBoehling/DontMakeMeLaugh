@@ -42,15 +42,10 @@ public class MainMenu : MonoBehaviour
 
     public void LateUpdate()
     {
+        // Load first game scene, after dolly is done
         if(_dollyCart.m_Path.MaxPos - 1f <= _dollyCart.m_Position)
         {
-            _camera.GetComponent<PlayerCameraController>().enabled = true;
-            _camera.GetComponent<PlayerInteractionController>().enabled = true;
-            if (!_gamesStarted && Input.GetKeyUp(KeyCode.Space))
-            {
-                _controller.OnWin21GameStart();
-                _gamesStarted = true;
-            }
+            SceneManager.LoadScene(1);
         }
     }
 

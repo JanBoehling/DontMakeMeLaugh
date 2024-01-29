@@ -5,16 +5,11 @@ public class RadioButton : MonoBehaviour, IInteractable
 {
     public UnityEvent OnButtonPressed;
 
-    public UnityEvent OnInteracted => onInteracted;
-
-    UnityEvent<Transform> IInteractable.OnInteracted => throw new System.NotImplementedException();
-
-    private UnityEvent onInteracted;
+    public UnityEvent<Transform> OnInteracted { get; } = new();
 
     private void Start()
     {
-        onInteracted = new UnityEvent();
-        onInteracted.AddListener(Interaction);    
+        OnInteracted.AddListener((_) => Interaction());    
     }
 
     private void Interaction()

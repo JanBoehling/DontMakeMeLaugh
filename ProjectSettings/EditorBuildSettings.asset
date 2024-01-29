@@ -8,14 +8,23 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: d4e5d834b12c865458c2a88f6140e731
+  - enabled: 1
+    path: Assets/Scenes/Win21.unity
+    guid: 2d3285e7903eb8244a547807fea70c20
+  - enabled: 1
+    path: Assets/Scenes/TheKings.unity
+    guid: 3afe5c507e372aa4fa7671f660a2db89
+  - enabled: 1
+    path: Assets/Scenes/RockPaperScissors.unity
+    guid: 21645258588fd874ba34fcc4e607872a
   - enabled: 0
     path: Assets/Scenes/Testing/JanTesting.unity
     guid: 128f5f06695269d41b72615a48894200
-  - enabled: 1
-    path: Assets/Scenes/WIn21_Test.unity
+  - enabled: 0
+    path: Assets/Scenes/Testing/WIn21_Test.unity
     guid: ca397f9d18849e943bd224e46d16eda7
-  - enabled: 1
-    path: Assets/Scenes/KingsGambit.unity
+  - enabled: 0
+    path: Assets/Scenes/Testing/KingsGambit.unity
     guid: 044ad843b2a390c4e92e4b5b51dfde73
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

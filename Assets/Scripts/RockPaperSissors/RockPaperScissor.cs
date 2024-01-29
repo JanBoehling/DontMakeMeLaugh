@@ -94,12 +94,12 @@ public class RockPaperScissor : MonoBehaviour
 
         RPSCard rpsCard = card.AddComponent<RPSCard>();
         rpsCard.cardType = type;
-        rpsCard.OnInteracted.AddListener(OnInteracted);
+        rpsCard.OnInteracted.AddListener(() => OnInteracted(transform));
         rpsCard.paperPrint = dummyCard.paperPrint;
         rpsCard.rockPrint = dummyCard.rockPrint;
         rpsCard.scissorPrint = dummyCard.scissorPrint;
         rpsCard.printQuad = dummyCard.transform.GetChild(0).gameObject;
-        rpsCard.ChangeCardType();
+        //rpsCard.ChangeCardType();
         return card;
     }
 

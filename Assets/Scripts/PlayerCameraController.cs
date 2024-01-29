@@ -16,13 +16,18 @@ public class PlayerCameraController : MonoBehaviour
     private float smoothDampVelocityX = default;
     private float smoothDampVelocityY = default;
 
+    private void Awake()
+    {
+        EnableCamera();
+    }
+
     private void Update()
     {
         CalculateRotation();
         Rotate();
     }
 
-    public void EnableCamera()
+    private void EnableCamera()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

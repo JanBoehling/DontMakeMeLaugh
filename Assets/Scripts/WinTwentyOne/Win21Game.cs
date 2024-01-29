@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,14 +24,17 @@ public class Win21Game : MonoBehaviour
     private int minRandom = 1;
     private int maxRandom = 11;
     private int maxPoints = 21;
-    private float cardShiftPlayer;
-    private float cardShiftAI;
+    private float cardOffsetPlayer;
+    private float cardOffsetAI;
     public int NumberOnCard;
     private bool playerAlreadyLost;
     private bool aiAlreadyLost;
     private bool playersTurn = true;
     public bool GameEnded;
     public bool NextGame;
+    [SerializeField] private Animator playerAnimator;
+    [SerializeField] private Transform finger;
+    [SerializeField] private Transform cardHoldingPoint;
 
     private void Start()
     {
@@ -43,6 +47,7 @@ public class Win21Game : MonoBehaviour
 
     private void Update()
     {
+        // Game ended: press space to init next game
         if (GameEnded && Input.GetKeyDown(KeyCode.Space))
         {
             NextGame = true;
@@ -56,12 +61,14 @@ public class Win21Game : MonoBehaviour
         else if (GameEnded)
             return;
 
+        // one particpant lost: end game
         if (playerAlreadyLost || aiAlreadyLost)
         {
             GameEnd();
             return;
         }
 
+        // Taking turns
         if (playersTurn)
         {
             Debug.Log("Drawing a Card");
@@ -95,52 +102,88 @@ public class Win21Game : MonoBehaviour
         int random = Random.Range(minRandom, maxRandom);
         NumberOnCard = random;
         Debug.Log(NumberOnCard);
-        ProduceCard();
+        StartCoroutine(InstantiateCardCO());
         return random;
     }
 
+    /// <summary>
+    /// Checks if player is still under 21 points
+    /// </summary>
     private void GameStillPlayable()
     {
         if (data.PlayerTotalCardValue < maxPoints)
-            AnotherCard();
+            GetCardDrawInput();
         else
             playerAlreadyLost = true;
     }
 
-    private void AnotherCard()
+    private void GetCardDrawInput()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetMouseButtonDown(0))
         {
             data.PlayerTotalCardValue += DrawCard();
         }
-        else if (Input.GetKeyDown(KeyCode.Q))
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
             playersTurn = false;
         }
     }
 
-    private void ProduceCard()
+    private IEnumerator InstantiateCardCO()
     {
-        numberContainer.GettingTheCorrectTexture(NumberOnCard);
-        GameObject itemObject = Instantiate(numberContainer.correctGameObject, cardSpawnPoint);
+        // Play anim
+        playerAnimator.SetTrigger("DoCard");
 
-        if (playersTurn == true)
-        {
-            itemObject.transform.localPosition = new Vector3(cardShiftPlayer, 0, 0);
-            itemObject.transform.eulerAngles = new Vector3(0, 180, 0);
-            itemObject.transform.localScale = new Vector3(0.11f, 0.11f, 0.11f);
-            cardShiftPlayer += 0.3f;
-        }
-        else
-        {
-            itemObject.transform.localPosition = new Vector3(cardShiftAI, 0, 0.5f);
-            itemObject.transform.eulerAngles = Vector3.zero;
-            itemObject.transform.localScale = new Vector3(0.11f, 0.11f, 0.11f);
-            cardShiftAI += 0.3f;
-        }
+        // After x seconds, spawn card
+        yield return new WaitForSeconds(1f);
 
-        garbageContainer.Add(itemObject);
+        var cardPrefab = numberContainer.GetCardPrefab(NumberOnCard);
+        var itemObject = Instantiate(cardPrefab, finger.position, Quaternion.identity, finger);
+
+        // After x more seconds, unparent card and lerp to card holding position
+        yield return new WaitForSeconds(.25f);
+
+        itemObject.transform.SetParent(null);
+
+        float duration = 1.5f;
+        float elapsedTime = 0;
+        while (elapsedTime < duration)
+        {
+            transform.position = Vector3.Lerp(transform.position, cardHoldingPoint.position, elapsedTime / duration);
+
+            var pos = transform.position;
+            pos.y = 0.847f;
+            transform.position = pos;
+            transform.SetPositionAndRotation(pos, Quaternion.identity);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
     }
+
+    //private void InstantiateCard()
+    //{
+    //    var cardPrefab = numberContainer.GetCardPrefab(NumberOnCard);
+    //    var itemObject = Instantiate(cardPrefab, cardSpawnPoint);
+
+    //    if (playersTurn == true)
+    //    {
+    //        itemObject.transform.localPosition = new Vector3(cardOffsetPlayer, 0, 0);
+    //        itemObject.transform.eulerAngles = new Vector3(0, 180, 0);
+    //        itemObject.transform.localScale = new Vector3(0.11f, 0.11f, 0.11f);
+    //        cardOffsetPlayer += 0.3f;
+    //    }
+    //    else
+    //    {
+    //        itemObject.transform.localPosition = new Vector3(cardOffsetAI, 0, 0.5f);
+    //        itemObject.transform.eulerAngles = Vector3.zero;
+    //        itemObject.transform.localScale = new Vector3(0.11f, 0.11f, 0.11f);
+    //        cardOffsetAI += 0.3f;
+    //    }
+
+    //    garbageContainer.Add(itemObject);
+    //}
 
     private void GameEnd()
     {

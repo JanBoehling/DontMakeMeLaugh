@@ -45,40 +45,32 @@ public class GameController : MonoBehaviour
 
     public void OnStart()
     {
-        _playerObject.GetComponent<Win21Game>().enabled = false;
-        _playerObject.GetComponent<TheKingsGame>().enabled = false;
-
-        _enemyObject.GetComponent<TwentyOneBehaviour>().enabled = false;
-        _enemyObject.GetComponent<TheKingsBehaviour>().enabled = false;
-
         _playerObject.SetActive(false);
         _enemyObject.SetActive(false);
 
-        _win21Canvas.SetActive(false);
-        _theKingsCanvas.SetActive(false);
 
-        foreach (var item in _twentyOneWinGameObjects)
-            item.SetActive(false);
+        //foreach (var item in _twentyOneWinGameObjects)
+        //    item.SetActive(false);
 
         foreach (var item in _theKingsGameObjects)
             item.SetActive(false);
     }
 
-    public void OnRockPaperScissorsStart()
-    {
-        foreach (var item in _rockPaperSissorsGameObjects)
-            item.SetActive(true);
+    //public void OnRockPaperScissorsStart()
+    //{
+    //    foreach (var item in _rockPaperSissorsGameObjects)
+    //        item.SetActive(true);
 
-        _rockPapScissCanvas.SetActive(false);
+    //    _rockPapScissCanvas.SetActive(false);
 
-        _playerObject.GetComponent<RockPaperScissor>().enabled = true;
-        _enemyObject.GetComponent<RockPaperSissorBehaviour>().enabled = true;
+    //    _playerObject.GetComponent<RockPaperScissor>().enabled = true;
+    //    _enemyObject.GetComponent<RockPaperSissorBehaviour>().enabled = true;
 
-        _playerObject.SetActive(true);
-        _enemyObject.SetActive(true);
+    //    _playerObject.SetActive(true);
+    //    _enemyObject.SetActive(true);
 
-        _playerObject.GetComponent<RockPaperScissor>().StartGame();
-    }
+    //    _playerObject.GetComponent<RockPaperScissor>().StartGame();
+    //}
 
     public void OnWin21GameStart()
     {

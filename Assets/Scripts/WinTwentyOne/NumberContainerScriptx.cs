@@ -1,14 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NumberContainerScriptx : MonoBehaviour
 {
-    public GameObject[] GameObjectCards;
-    public GameObject correctGameObject;
+    [SerializeField] private GameObject[] GameObjectCards;
 
-    public void GettingTheCorrectTexture(int drawnNumber)
-    {
-        correctGameObject = GameObjectCards[drawnNumber];
-    }
+    public GameObject GetCardPrefab(int drawnNumber) => GameObjectCards[drawnNumber];
 }
