@@ -24,8 +24,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        _controller = GetComponent<GameController>();
-        _controller.OnStart();
+      
 
         _camera.GetComponent<PlayerCameraController>().enabled = false;
         _camera.GetComponent<PlayerInteractionController>().enabled = false;
