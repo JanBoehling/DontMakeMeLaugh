@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.1177, g: 324.74368, b: 429.81012, a: 1}
+  m_IndirectSpecularColor: {r: 262.03604, g: 324.65222, b: 429.68732, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1617,7 +1617,6 @@ MonoBehaviour:
   - {fileID: 8162225728179395328, guid: 6658a6c076935344d871a2e463bfe17d, type: 3}
   - {fileID: 9185819494164737920, guid: fa30c713b2ae0f5488bbf156d9001fc5, type: 3}
   - {fileID: 416680558647835512, guid: ae021a19490d7a543b9fd32e9f67905b, type: 3}
-  correctGameObject: {fileID: 0}
 --- !u!4 &505788552
 Transform:
   m_ObjectHideFlags: 0
@@ -3786,7 +3785,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radio: {fileID: 1459939691}
-  _environment: {fileID: 1818804399}
   _player: {fileID: 1582967496}
   _clownVoicelinePlayer: {fileID: 234181946}
   _clips:
@@ -3931,6 +3929,63 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.255, y: -1.568, z: 0.094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1372717842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1372717844}
+  - component: {fileID: 1372717843}
+  m_Layer: 0
+  m_Name: RPSGamemanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1372717843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372717842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ab112e32f19ce4ba1ae7e5dfcc2eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: d5562965c6a1246408f0bf429e2487ae, type: 2}
+  Card: {fileID: 6364774321743177772, guid: 824c50749234ef14a98c3fa043a5b239, type: 3}
+  pointsNeeded: 2
+  CardPos1: {fileID: 1792852441}
+  CardPos2: {fileID: 230679479}
+  CardPos3: {fileID: 2051537870}
+  CardPosOpponent: {fileID: 1265363052}
+  dummyCard: {fileID: 532569631}
+  PlayersCardChoice: {fileID: 0}
+  OpponentCardChoice: {fileID: 0}
+  PlayersChoice: 0
+  OpponentChoice: 0
+  NextGame: 0
+--- !u!4 &1372717844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372717842}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.6545455, y: -10.217429, z: 13.080048}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4991,6 +5046,9 @@ MonoBehaviour:
   NumberOnCard: 0
   GameEnded: 0
   NextGame: 0
+  playerAnimator: {fileID: 0}
+  finger: {fileID: 0}
+  cardHoldingPoint: {fileID: 0}
 --- !u!4 &1582967498
 Transform:
   m_ObjectHideFlags: 0
@@ -6203,3 +6261,4 @@ SceneRoots:
   - {fileID: 532569632}
   - {fileID: 234181945}
   - {fileID: 907880210}
+  - {fileID: 1372717844}
