@@ -12,7 +12,7 @@ public class TaskDrawCard : Node
     public override NodeState Evaluate()
     {
         if (_data.Game.GameEnded) return NodeState.Failed;
-        int card = _data.Game.DrawCard();
+        int card = _data.Game.DrawCardEnemy();
         _data.AILastCardValue = card;
         _data.AITotalCardValue += card;
         _data.AICardCount++;

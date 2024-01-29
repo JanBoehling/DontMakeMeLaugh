@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Win21Game : MonoBehaviour
 {
@@ -35,6 +36,11 @@ public class Win21Game : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private Transform finger;
     [SerializeField] private Transform cardHoldingPoint;
+    private GameObject cardOnTable;
+    [SerializeField] private GameObject cardImageContainerPlayer;
+    [SerializeField] private GameObject cardImageContainerEnemy;
+    [SerializeField] private GameObject cardImagePrefab;
+    [SerializeField] private DrawSequence enemyDrawSequence;
 
     private void Start()
     {
@@ -53,7 +59,7 @@ public class Win21Game : MonoBehaviour
             NextGame = true;
             foreach (var item in garbageContainer)
             {
-                Destroy(item.gameObject);
+                Destroy(item);
             }
             garbageContainer.Clear();
             return;
@@ -97,12 +103,23 @@ public class Win21Game : MonoBehaviour
         GameEnd();
     }
 
-    public int DrawCard()
+    public int DrawCardPlayer()
     {
         int random = Random.Range(minRandom, maxRandom);
         NumberOnCard = random;
-        Debug.Log(NumberOnCard);
         StartCoroutine(InstantiateCardCO());
+        return random;
+    }
+
+    public int DrawCardEnemy()
+    {
+        int random = Random.Range(minRandom, maxRandom);
+        NumberOnCard = random;
+        enemyDrawSequence.PlaySequence();
+
+        // Display card in ui
+        var cardUI = Instantiate(cardImagePrefab, cardImageContainerEnemy.transform);
+        cardUI.transform.GetChild(0).GetComponent<Image>().sprite = numberContainer.GetCardUI(NumberOnCard);
         return random;
     }
 
@@ -119,9 +136,9 @@ public class Win21Game : MonoBehaviour
 
     private void GetCardDrawInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (playersTurn && Input.GetMouseButtonDown(0))
         {
-            data.PlayerTotalCardValue += DrawCard();
+            data.PlayerTotalCardValue += DrawCardPlayer();
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -137,29 +154,39 @@ public class Win21Game : MonoBehaviour
         // After x seconds, spawn card
         yield return new WaitForSeconds(1f);
 
-        var cardPrefab = numberContainer.GetCardPrefab(NumberOnCard);
-        var itemObject = Instantiate(cardPrefab, finger.position, Quaternion.identity, finger);
+        // Destroy old card
+        if (cardOnTable) cardOnTable.SetActive(false);
+        if (cardOnTable) garbageContainer.Add(cardOnTable);
 
-        // After x more seconds, unparent card and lerp to card holding position
-        yield return new WaitForSeconds(.25f);
+        // Instantiat new card
+        cardOnTable = numberContainer.GetCardPrefab(NumberOnCard);
+        cardOnTable.transform.position = finger.position;
+        cardOnTable.transform.SetParent(finger);
+        cardOnTable.transform.localScale *= .25f; 
+        var rotator = cardOnTable.AddComponent<CardRotator>();
+        rotator.InAnimation = true;
 
-        itemObject.transform.SetParent(null);
+        // After x more seconds, unparent card
+        yield return new WaitForSeconds(1f);
+        cardOnTable.transform.SetParent(null, true);
 
-        float duration = 1.5f;
-        float elapsedTime = 0;
-        while (elapsedTime < duration)
-        {
-            transform.position = Vector3.Lerp(transform.position, cardHoldingPoint.position, elapsedTime / duration);
+        // Display card in ui
+        var cardUI = Instantiate(cardImagePrefab, cardImageContainerPlayer.transform);
+        cardUI.transform.GetChild(0).GetComponent<Image>().sprite = numberContainer.GetCardUI(NumberOnCard);
 
-            var pos = transform.position;
-            pos.y = 0.847f;
-            transform.position = pos;
-            transform.SetPositionAndRotation(pos, Quaternion.identity);
+        // Lerp card to card holding point  
+        //float duration = 1.5f;
+        //float elapsedTime = 0;
+        //while (elapsedTime < duration)
+        //{
+        //    itemObject.transform.position = Vector3.Lerp(itemObject.transform.position, cardHoldingPoint.position, elapsedTime / duration);
+        //
+        //    elapsedTime += Time.deltaTime;
+        //
+        //    yield return null;
+        //}
 
-            elapsedTime += Time.deltaTime;
-
-            yield return null;
-        }
+        rotator.InAnimation = false;
     }
 
     //private void InstantiateCard()

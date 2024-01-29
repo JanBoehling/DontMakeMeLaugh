@@ -113,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 4841041335540341862}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5195836, y: 0.795, z: -0.1412352}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -149,11 +149,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4841041335540341862}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35216cc858ee7ed48972e157c252daba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHandDistance: 0.5
+  selectedCardPosition: {fileID: 0}
 --- !u!1001 &872703883323384940
 PrefabInstance:
   m_ObjectHideFlags: 0

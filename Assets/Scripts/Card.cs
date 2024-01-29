@@ -50,7 +50,6 @@ public class Card : MonoBehaviour, IInteractable
 
             var pos = transform.position;
             pos.y = 0.847f;
-            transform.position = pos;
             transform.SetPositionAndRotation(pos, Quaternion.identity);
 
             elapsedTime += Time.deltaTime;

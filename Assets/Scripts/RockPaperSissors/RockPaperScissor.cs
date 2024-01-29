@@ -35,7 +35,7 @@ public class RockPaperScissor : MonoBehaviour
     public static RockPaperScissor instance;
     public bool NextGame;
 
-    public void StartGame()
+    public void OnAwake()
     {
         if (GameHasStarted)
         {

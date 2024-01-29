@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -8,39 +9,35 @@ using UnityEditor;
 public class DrawSequence : MonoBehaviour
 {
     [SerializeField] private GameObject cardPrefab;
-    [SerializeField] private Transform hand;
-
-    private CardStackGenerator stack;
+    [SerializeField] private Transform finger;
+    [SerializeField] private Transform cardStack;
     private Animator animator;
 
     private void Awake()
     {
-        stack = FindAnyObjectByType<CardStackGenerator>();
         animator = GetComponentInChildren<Animator>();
     }
 
-    public void PlaySequence()
+    public void PlaySequence() => StartCoroutine(PlaySequenceCO());
+
+    private IEnumerator PlaySequenceCO()
     {
-        var topInStack = stack.transform.GetChild(stack.transform.childCount - 1);
-        var card = Instantiate(cardPrefab, topInStack.transform.position, Quaternion.identity, hand);
-        card.GetComponent<Card>().InAnimation = true;
-        //card.transform.localScale = Vector3.one * 0.05f;
-        //var pos = card.transform.position;
-        //pos.y = 0.825f;
-        //card.transform.position = pos;
+        // Instantiate new card
+        var topInStack = cardStack.GetChild(cardStack.childCount - 1);
+        var card = Instantiate(cardPrefab, topInStack.transform.position, Quaternion.identity);
+        card.transform.SetParent(finger);
+        card.transform.localScale *= .25f;
+        var rotator = card.AddComponent<CardRotator>();
+        rotator.InAnimation = true;
 
         // Trigger animation
         animator.SetTrigger("DoCard");
 
-        StartCoroutine(PlaySequenceCO(card.transform));
-    }
-
-    private IEnumerator PlaySequenceCO(Transform card)
-    {
+        // After x seconds, unparent card
         yield return new WaitForSeconds(.625f);
 
-        card.SetParent(null);
-        card.GetComponent<Card>().InAnimation = false;
+        card.transform.SetParent(null, true);
+        rotator.InAnimation = false;
     }
 }
 
@@ -52,7 +49,7 @@ public class DrawSequenceEditor : Editor
     {
         serializedObject.Update();
         DrawPropertiesExcluding(serializedObject, "m_Script");
-        if (GUILayout.Button("Draw card!")) ((DrawSequence)target).PlaySequence();
+        if (Application.isPlaying && GUILayout.Button("Draw card!")) ((DrawSequence)target).PlaySequence();
         serializedObject.ApplyModifiedProperties();
     }
 }

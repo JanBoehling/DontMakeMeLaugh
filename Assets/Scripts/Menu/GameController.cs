@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -32,7 +33,8 @@ public class GameController : MonoBehaviour
         //}
         if (_playerObject.GetComponent<Win21Game>().NextGame && _gameCompletedCount == 0)
         {
-            OnTheKingsGameStart(); // Game 3
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //OnTheKingsGameStart(); // Game 3
             _gameCompletedCount++;
         }
         if (_playerObject.GetComponent<TheKingsGame>().GameFinished && _gameCompletedCount == 1)

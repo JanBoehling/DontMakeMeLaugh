@@ -24,8 +24,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        _controller = GetComponent<GameController>();
-        _controller.OnStart();
+      
 
         _camera.GetComponent<PlayerCameraController>().enabled = false;
         _camera.GetComponent<PlayerInteractionController>().enabled = false;
@@ -58,6 +57,21 @@ public class MainMenu : MonoBehaviour
         catch (System.Exception)
         {
             Debug.LogError("Could not open URL");
+        }
+    }
+
+    public void OpenUrl(params string[] urls)
+    {
+        foreach (var url in urls)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(url);
+            }
+            catch (System.Exception)
+            {
+                Debug.LogError("Could not open URL");
+            }
         }
     }
 
