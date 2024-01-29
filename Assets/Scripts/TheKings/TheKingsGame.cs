@@ -130,6 +130,15 @@ public class TheKingsGame : MonoBehaviour
         if (winner is not null)
             hasWinner = TheKingsController.RaiseScore((TheKingsParticipant)winner);
 
+        if (winner == TheKingsParticipant.Player)
+        {
+            Debug.Log("Point for Player");
+        }
+        else if(winner == TheKingsParticipant.Enemy)
+        {
+            Debug.Log("Point for Clown");
+        }
+
         playerPlayed = false;
         enemyPlayed = false;
 

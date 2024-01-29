@@ -1,4 +1,6 @@
 
+using UnityEngine.SceneManagement;
+
 public static class TheKingsController
 {
     public static CardSO PlayedCardPlayer { get; private set; } = null;
@@ -39,12 +41,12 @@ public static class TheKingsController
         if (owner == TheKingsParticipant.Player) PlayerScore++;
         else EnemyScore++;
 
-        if (PlayerScore >= 3)
+        if (PlayerScore >= 2)
         {
             Winner(TheKingsParticipant.Player);
             hasWinner = true;
         }
-        else if (EnemyScore >= 3)
+        else if (EnemyScore >= 2)
         {
             EnemyAgent.AgentBeliefs.ModifyState("hasPoint", 1);
             Winner(TheKingsParticipant.Enemy);
@@ -56,6 +58,6 @@ public static class TheKingsController
 
     public static void Winner(TheKingsParticipant winner)
     {
-        // Callback end game
+            SceneManager.LoadScene(5, LoadSceneMode.Single);
     }
 }
