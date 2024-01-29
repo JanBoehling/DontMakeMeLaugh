@@ -41,6 +41,7 @@ public class Win21Game : MonoBehaviour
     [SerializeField] private GameObject cardImageContainerEnemy;
     [SerializeField] private GameObject cardImagePrefab;
     [SerializeField] private DrawSequence enemyDrawSequence;
+    private const int roundCount = 3;
 
     private void Start()
     {
@@ -218,6 +219,7 @@ public class Win21Game : MonoBehaviour
         {
             //Player Win, because he is closer to 21 than the AI.
             AudioPlayEvent?.Invoke("FINGIES", enemy);
+            RoundCountHolder.PlayerWon++;
         }
         else if(data.AITotalCardValue <= maxPoints && data.AITotalCardValue > data.PlayerTotalCardValue && data.PlayerTotalCardValue <= maxPoints)
         {
@@ -233,6 +235,7 @@ public class Win21Game : MonoBehaviour
         {
             //Player win, because ai is over 21 while player is not.
             AudioPlayEvent?.Invoke("21Thoughts", enemy);
+            RoundCountHolder.PlayerWon++;
         }
         if (data.PlayerTotalCardValue > maxPoints && data.AITotalCardValue > maxPoints && data.PlayerTotalCardValue > data.AITotalCardValue)
         {
@@ -243,12 +246,15 @@ public class Win21Game : MonoBehaviour
         {
             //Player Win, because both are over 21 but he has the lower number
             AudioPlayEvent?.Invoke("DropKickAChild", enemy);
+            RoundCountHolder.PlayerWon++;
         }
         if (data.PlayerTotalCardValue == data.AITotalCardValue)
         {
             //Noone Wins
             AudioPlayEvent?.Invoke("ComingForFingers", enemy);
         }
+
+        RoundCountHolder.RoundCount++;
 
         GameEnded = true;
     }

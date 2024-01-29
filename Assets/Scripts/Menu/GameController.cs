@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     private GameObject _theKingsCanvas;
     [SerializeField]
     private List<GameObject> _theKingsGameObjects = new List<GameObject>();
+    [SerializeField] private AttackSequence _attackSequence;
 
     int _gameCompletedCount = 0;
 
@@ -33,7 +34,15 @@ public class GameController : MonoBehaviour
         //}
         if (_playerObject.GetComponent<Win21Game>().NextGame && _gameCompletedCount == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (RoundCountHolder.RoundCount == RoundCountHolder.MaxRoundCount)
+            {
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                _attackSequence.PlaySequence();
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
             //OnTheKingsGameStart(); // Game 3
             _gameCompletedCount++;
         }

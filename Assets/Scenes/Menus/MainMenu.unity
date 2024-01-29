@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 132611606}
+  - component: {fileID: 132611607}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -153,6 +154,18 @@ Transform:
   - {fileID: 2139700023}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &132611607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132611605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8b90343d722314292e99c5672c5530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &136759483
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +788,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 180805303}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 933294649}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &180805303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1543,6 +1568,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room
       objectReference: {fileID: 0}
+    - target: {fileID: 4082113165671339724, guid: 5eca96f47a8e5e44c913fca86817133d,
+        type: 3}
+      propertyPath: arm
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4082113165671339724, guid: 5eca96f47a8e5e44c913fca86817133d,
+        type: 3}
+      propertyPath: severedHand
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4637978543920509264, guid: 5eca96f47a8e5e44c913fca86817133d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1596,6 +1631,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7169858707294671115, guid: 5eca96f47a8e5e44c913fca86817133d, type: 3}
+    - {fileID: 1553258972143101125, guid: 5eca96f47a8e5e44c913fca86817133d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eca96f47a8e5e44c913fca86817133d, type: 3}
@@ -3383,10 +3419,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

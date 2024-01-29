@@ -16,6 +16,8 @@ public class AttackSequence : MonoBehaviour
     [SerializeField] private GameObject arm = default;
     [SerializeField] private GameObject severedHand = default;
 
+    [SerializeField] private GameObject cardUI;
+
     private Animator animator = default;
 
     private void Awake()
@@ -28,6 +30,7 @@ public class AttackSequence : MonoBehaviour
         // Beil on table deactivated, beil in hand activated
         axeOnTable.SetActive(false);
         axeInHand.SetActive(true);
+        cardUI.SetActive(false);
 
         // Animation played
         animator.SetTrigger("DoAttack");
